@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 실습 1</title>
+
+    <!-- 내장형 방식 -->
+    <style>
+        h3 {
+            width: fit-content;
+            color: white;
+            background-color: black;
+        }
+        div {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 인라인 형식 -->
+    <!-- 가장 나중에 읽히기 때문에 우선 적용된다. -->
+
+    <!-- 내가 한 것
+        <div style="width: 50px; height: 20px; background-color: black;">
+            <h3 style="color: white;">무지개</h3>
+        </div>
+    -->
+    <h3>무지개</h3>
+    <p>
+    <div style="width: 50px; background-color: red;"></div> 
+
+    <div style="width: 100px; background-color: orange;"></div>
+
+    <div style="width: 150px; background-color: yellow;"></div>
+    
+    <div style="width: 200px; background-color: green;"></div>
+
+    <div style="width: 250px; background-color: blue;"></div>
+
+    <div style="width: 300px; background-color: rgb(6, 6, 78);"></div>
+
+    <div style="width: 350px; background-color: purple;"></div>
+    </p>
+
+    
+</body>
+</html>
