@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 12</title>
+    <style>
+        .border_1 {
+            /* 도형 크기 */
+            width: 150px;
+            height: 150px;
+
+            /* 도형 두께 */
+            border-width: 2px 5px 10px 20px;
+
+            /* 도형 종류 */
+            border-style: solid;
+
+            /* 도형 색상 */
+            border-color: black;
+        }
+
+        .border_2 {
+            /* 도형 크기 */
+            width: 150px;
+            height: 150px;
+            margin-top : 10px;
+
+            /* 도형 두께 */
+            border-width: 10px;
+
+            /* 도형 종류 */
+            border-style: solid dotted double groove;
+
+            /* 도형 색상 */
+            border-color: black;
+        }
+
+        .border_3 {
+            /* 도형 크기 */
+            width: 150px;
+            height: 150px;
+            margin-top : 10px;
+
+            /* 도형 두께 */
+            border-width: 10px;
+
+            /* 도형 종류 */
+            border-style: solid;
+
+            /* 도형 색상 */
+            border-color: black red green blue;
+        }
+
+        .border_4 {
+            /* 도형 크기 */
+            width: 150px;
+            height: 150px;
+            margin-top : 10px;
+
+            /* 도형 방향 속성 */
+            border-top: 5px solid red;
+            border-right: 10px double blue;
+            border-bottom: 15px dashed skyblue;
+            border-left: 20px dotted purple;
+        }
+
+        .box-sizing {
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 15px solid red;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="border_1"></div>
+    <div class="border_2"></div>
+    <div class="border_3"></div>
+    <div class="border_4"></div>
+    <hr>
+
+    <!-- 실습 13 -->
+    <!-- Box-sizing -->
+    <div class="box-sizing" style="box-sizing: content-box;">content-box</div>
+    <div class="box-sizing" style="box-sizing: border-box;">border-box</div>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>width & height</title>
+    <style>
+        /* border */
+        .border {
+            margin: 10px;
+            border: 2px solid black;
+            /* border: 2px dotted red; */
+            width: 200px;
+            height: 200px;
+
+            /* radius (모서리 둥글기)) */
+            border-radius: 20%;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            display: inline-block;
+        }
+
+        .d-none {
+            display: none;
+            background-color: red;
+        }
+
+        .invisible {
+            visibility: hidden;
+            background-color: orangered;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body style="margin: 0;">
+    <div style="background-color: aqua; width: 100px; height: 100px;"></div>
+    <div style="background-color: aquamarine; width: 100vw; height: 100px;"></div>
+
+    <!-- max, min -->
+    <div class="box" style="background-color: orange; width: calc(30vw - 100px); height: 30vh; max-width: 300px; min-width: 200px;"></div>
+
+    <!-- border -->
+    <div class="border"></div>
+    <div class="border" style="border-radius: 10px;"></div>
+
+    <!-- 4방향 다 다르게 주기 -->
+    <div class="border" style="border-radius: 10px 20px 0 30%;"></div>
+
+    <!-- 원 만들떈 50% 주기 -->
+    <div class="border" style="border-radius: 50%;"></div>
+
+    <!-- visibility (투명도) -->
+<!--     
+    <div class="square">original</div>
+    <div class="square d-none">d-none</div>
+    <div class="square invisible">invisible</div>
+    <div class="square opacity-0">opacity</div>
+    <div class="square">original</div> -->
+
+    <!-- overflow -->
+    <div class="square" style="overflow: scroll;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ea nulla sapiente enim quos autem, nesciunt nisi vero iusto fugiat delectus doloremque. Illo ullam quod at dolores saepe veniam excepturi?
+        Numquam debitis quasi excepturi laudantium eum. Nam incidunt non commodi praesentium nobis pariatur animi. Voluptatem quasi ipsa praesentium velit. Enim voluptate dolor necessitatibus repudiandae dolores dolorum voluptatem aperiam voluptates consequatur!
+        Ex asperiores vitae, assumenda repudiandae laboriosam consequuntur sint provident debitis id qui. Sapiente omnis doloribus ratione? Ipsum provident odio fuga reiciendis illum voluptatibus rem minus deserunt tempore dolor. At, quis.
+    </div>
+
+    <div class="square" style="overflow: auto;">over flow Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ea nulla sapiente enim quos autem, nesciunt nisi vero iusto fugiat delectus doloremque. Illo ullam quod at dolores saepe  </div>
+    
+</body>
+</html>

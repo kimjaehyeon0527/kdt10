@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <title>설문조사</title>
+    <style>
+        .body {
+            margin: 0 auto;
+        }
+
+        .form {
+            background-color: rgb(187, 231, 249);
+            margin: 20px 55vw 20px 20px;
+            border: 2px solid black;
+            border-radius: 12%;
+            font-family:'Nanum Pen Script', Courier, cursive;
+            font-size: 25px;
+        }
+
+        .p1:hover {
+            background-color: brown;
+        }
+
+
+        .click {
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        .lecture {
+            margin-top: 5px;
+        }
+
+        .textarea {
+            width: 100%;
+            height: 300px;      
+            border-radius: 5px;
+            border: 5px pink double;
+            background-color: rgb(242, 247, 226);
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body class="body">
+    <form class="form">
+        <div style="padding: 10px 10px;">
+            <div style="padding-top: 20px; padding-bottom: 20px; text-align: center;" >
+                <b>설문조사</b>
+            </div>
+
+            <hr>
+            <p>
+                이름 <input class="p1" type="text"> <br>
+            </p>
+            <p>
+                이메일 <input class="p1" type="text" placeholder="love@example.com">
+            </p>
+
+            <hr>
+            <div class="age">
+                <div>
+                    <b>나이</b>
+                </div>
+    
+                <p>
+                <input type="radio" name="age" id="10대" checked>10대
+                <input type="radio" name="age" id="20대" >20대
+                <input type="radio" name="age" id="30대" >30대
+                <input type="radio" name="age" id="40대" >40대
+                <input type="radio" name="age" id="50대" >50대
+                <input type="radio" name="age" id="60대 이상" >60대 이상
+                </p>
+            </div>
+            <hr>
+
+            <div class="lecture">
+                <b>원하는 강의 (복수응답 가능합니다.)</b>
+    
+                <p>
+                    <input type="checkbox" name="subject" id="html" checked>html
+                    <input type="checkbox" name="subject" id="javascript">javascript
+                    <input type="checkbox" name="subject" id="css">css
+                </p>
+            </div>
+            <hr>
+
+            <div>
+                <textarea class="textarea" placeholder="하고 싶은 말을 써주세요:)"></textarea>
+            </div>
+
+            <div class="click">   
+                <input type="button" value="제출" style="background-color: rgb(250, 217, 217);">
+            </div>  
+        </div>
+    </form>
+</body>
+</html>
