@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 16 해설</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+            border: 10px solid black;
+            padding: 0;
+            position: relative;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .relative {
+            position: relative;
+            left: 50px;
+            top: 30px;
+        }
+        .absolute {
+            position: absolute;
+            right: 30px;
+            bottom: 100px;
+        }
+        .fixed {
+            position: fixed;
+            right: 100px;
+            top: 100px;
+        }
+
+        /* larva */
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .circle1 {
+            background-color: red;
+        }
+        .eye1 {
+            background-color: white;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            left: 30px;
+            top: 20px;
+        }
+        
+        .eye2 {
+            background-color: black;
+            position: absolute;
+            left: 30px;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .circle2 {
+            left: 60px;
+            bottom: 50px;
+            background-color: orange;
+        }
+        .circle3 {
+            left: 100px;
+            bottom: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- position -->
+    <div class="container">
+        <div style="background-color: red;" class="box"></div>
+        <div style="background-color: orange;" class="box relative">item1</div>
+        <div style="background-color: yellow;" class="box absolute">item2</div>
+        <div style="background-color: green;"  class="box fixed">item3</div>
+    </div>
+
+    <!-- z-index -->
+    <div class="container">
+        <div class="box" style="background-color: red; position: relative; z-index: 1;">item1</div>
+        <div class="box" style="background-color: orange; position: absolute; top: 30px; left: 30px;">item2</div>
+        <div class="box" style="background-color: yellow; position: absolute; top: 60px; left: 60px; z-index: 2;">item3</div>
+    </div>
+
+    <!-- larva -->
+    <div class="circle circle1">
+        <div class="eye1"></div>
+        <div class="eye2"></div>
+    </div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+</body>
+</html>

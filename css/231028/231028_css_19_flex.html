@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        .container {
+            background-color: green;
+            width: 500px;
+            height: 300px;
+            display: flex;
+
+            /* flex-direction */
+            /* flex-direction: row; */
+            /* flex-direction: row-reverse;  시작점이 오른쪽에서 왼쪽으로 바뀌었다 */
+            /* flex-direction: column; 옆으로 눕는다 */
+            /* flex-direction: column-reverse; 옆으로 누운게 시작점이 밑에서 위쪽으로 바뀐다. */
+
+            /* flex-warp */
+            flex-wrap: nowrap; /* default */
+            flex-wrap: wrap;
+
+            /* justify-content : 주 축에 대한 정렬 */
+            /* justify-content: flex-start; Default */
+            /* justify-content: flex-end;  끝 점으로 가서 붙는다 */
+            /* justify-content: center; */
+            /* justify-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly; */
+        }
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .item1 {
+            background-color: red;
+        }
+        .item2 {
+            background-color: yellow;
+        }
+
+        /* align-items */
+
+        .item3 {
+            /* width: 100px;
+            height: 20px; */
+            background-color: pink;
+        }
+        .item4 {
+            /* width: 200px;
+            height: 20px; */
+            background-color: aqua;
+        }
+        .item5 {
+            /* width: 300px;
+            height: 40px; */
+            background-color: coral;
+        }   
+        .align-items {
+            /* align-items: flex-start; */
+            /* align-items: flex-end; */
+            /* align-items: center; */
+            /* base line은 문자기준인데 아직 없어서 나중에 본다. */
+
+            /* align-content */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item1">3</div>
+        <!-- <div class="item2">4</div>
+        <div class="item1">5</div>
+        <div class="item2">6</div> -->
+    </div>
+    <hr>
+    <!-- align-items -->
+    <div class="container align-items">
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+        <div class="item3"></div>
+        <div class="item4"></div>
+        <div class="item5"></div>
+    </div>
+</body>
+</html>

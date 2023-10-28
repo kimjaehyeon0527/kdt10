@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        div {
+            background-color: orange;
+            width: 800px;
+            height: 500px; 
+        }
+        .background-img {
+            background-image: url(https://images.chosun.com/resizer/7fXeUbYGUI9_MWDKxDvD3PBUM3c=/210x210/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/TLAG2JUEF5DVJEQFYXCDAFW4FA.png);
+
+            /* 1. background-repeat */
+            background-repeat: repeat; /* default */
+            background-repeat: repeat-x;
+            background-repeat: repeat-y;
+            background-repeat: no-repeat;
+
+            /* background-position */
+            /* background-position: left; */
+            /* background-position: left top; */
+            /* background-position: center; */
+            /* background-position: 10px 100px; */
+            background-position: 100px;
+
+            /* background-size */
+            background-size: auto;  /* default */
+            background-size: 100px;
+            background-size: 100px 50px;
+            background-size: cover;
+            background-size: contain;
+
+        }
+         /* background-attachment */
+        .background-attachment {
+            width: 300px;
+            height: 300px;
+            overflow: scroll;
+            background-image: url(https://images.chosun.com/resizer/7fXeUbYGUI9_MWDKxDvD3PBUM3c=/210x210/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/TLAG2JUEF5DVJEQFYXCDAFW4FA.png);
+            
+            /* 나머지는 요소 기준 */
+            /* background-attachment: local; */
+            /* background-attachment: scroll; */
+
+            /* viewport 기준 */
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+<body style="height: 1000px;">
+    <div class="background-img"></div>
+    <div class="background-attachment">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus temporibus dolores in impedit reprehenderit iure laborum pariatur voluptate, minus omnis dolorem dolorum veritatis, odio unde asperiores quos minima? Perspiciatis, ut.
+        Aspernatur, ducimus cumque corrupti repellat molestias necessitatibus, voluptas magni nulla, nostrum fugiat dolorum eveniet. Sit, vero necessitatibus perferendis eum, incidunt laudantium repellendus error labore optio corporis nobis culpa sequi! Excepturi!
+        Exercitationem placeat ipsam porro suscipit vel? Modi unde vitae quo optio quos dolorum ab officiis blanditiis similique, quia ratione aliquid deleniti. Earum cumque vel laborum, ducimus veritatis delectus quo excepturi.
+        Laudantium earum animi libero, enim dolor facilis praesentium doloribus est. Unde temporibus ratione magni eligendi explicabo modi repellat? Voluptate saepe, totam dicta iusto quis molestias veniam voluptatibus nulla natus modi!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus temporibus dolores in impedit reprehenderit iure laborum pariatur voluptate, minus omnis dolorem dolorum veritatis, odio unde asperiores quos minima? Perspiciatis, ut.
+        Aspernatur, ducimus cumque corrupti repellat molestias necessitatibus, voluptas magni nulla, nostrum fugiat dolorum eveniet. Sit, vero necessitatibus perferendis eum, incidunt laudantium repellendus error labore optio corporis nobis culpa sequi! Excepturi!
+        Exercitationem placeat ipsam porro suscipit vel? Modi unde vitae quo optio quos dolorum ab officiis blanditiis similique, quia ratione aliquid deleniti. Earum cumque vel laborum, ducimus veritatis delectus quo excepturi.
+        Laudantium earum animi libero, enim dolor facilis praesentium doloribus est. Unde temporibus ratione magni eligendi explicabo modi repellat? Voluptate saepe, totam dicta iusto quis molestias veniam voluptatibus nulla natus modi!
+    </div>
+</body>
+</html>
