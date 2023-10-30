@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 20</title>
+    <style>
+        .bigbox {
+            width: 1300px;
+            height: 600px;
+            position: relative;
+            background-color: rgb(200, 251, 251);
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            transform: skewY(30deg);
+            position: absolute;
+            top: 150px;
+        }
+        .no1 {
+            left: 100px;
+            z-index: 2;
+        }
+        .no2 {
+            left: 400px;
+            z-index: 1;
+        }
+        .no3 {
+            left: 700px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bigbox">
+        <img class="box no1" src="/html/img/1.jpg" alt="">
+        <img class="box no2" src="/html/img/2.jpeg" alt="">
+        <img class="box no3" src="/html/img/3.png" alt="">
+    </div>
+</body>
+</html>

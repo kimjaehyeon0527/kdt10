@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 22 해설</title>
+    <style>
+        .ball {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: pink;
+
+            position: absolute;
+            animation-name: move;
+            animation-iteration-count: 6;;
+            animation-duration: 3s;
+        }
+        @keyframes move {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: 0;
+                left: 500px;
+            }
+            50% {
+                top: 500px;
+                left: 500px;
+            }
+            75% {
+                top: 500px;
+                left: 0;
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+
+        /* 4번 */
+        p {
+            animation: 3s slidein;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="ball"></div> -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero recusandae dignissimos, asperiores enim provident consequatur, voluptates quis voluptatum, perferendis possimus facere quas alias porro! Voluptatibus inventore eaque sint vero placeat.
+    Facilis iste dolor suscipit hic ea. Architecto veritatis minus debitis, adipisci cumque a inventore consequuntur doloremque libero quis. Omnis necessitatibus laudantium repudiandae repellendus possimus. Commodi ullam quas aut adipisci modi!</p>
+</body>
+</html>
