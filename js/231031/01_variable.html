@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable</title>
+    <script>
+        /* 
+        자료형
+        - 기본
+            - String
+            - number
+            - boolean
+            - null
+            - undefined
+        - 객체
+            - array
+            - object
+        */
+
+        // 1. string
+        let myName = "길동";
+        let email = "gildong@naver.com"
+        let city = '서울';  // '' , "" 선택
+
+        console.log(myName);
+        console.log(email);
+        console.log(city);
+
+        // 문자와 변수를 동시에 출력
+        console.log('내 이름은', myName, '입니다.')
+        console.log('내 이름은 ' + myName + ' 입니다.') // 결과가 붙여서 나옴.
+
+        // 백틱 (``)
+        console.log(`내 이름은 ${myName} 입니다.`)
+
+        // () 안 내용 자체를 변수로 만들어서 쓰겠다.
+        let gildong = `내 이름은 ${myName} 입니다.`
+        console.log(gildong)
+
+        // 2. number
+        let number = 123;
+        let opacity = 0.7;
+        console.log(number);
+        console.log(opacity);
+        // NaN : not a number -- 숫자가 아니다.
+        console.log('apple' - 3); // NaN
+        console.log('123' - 3); // console.log에서 변환을 해서 120
+
+        // 3. boolean
+        let checked = true;
+        let isShow = false;
+
+        console.log(checked);
+        console.log(isShow);
+
+        // 4. undefined -- 값을 할당하지 않았을 때
+        let undef;
+        console.log(undef)
+
+        // 5. null -- 의도된 빈 값.
+        let empty = null;
+        console.log(empty);
+
+        // 6. array (배열) []
+        let fruits = ['orange', 'pineapple', 'grape', 'apple'];
+        let data = [1, 'gildong', false, null, undefined];
+
+        console.log(fruits);
+        console.log(data);
+        // 배열 하나 씩 꺼내려면
+        console.log(fruits[0], fruits[1]);
+
+        // 2차원 배열 : [ [], [], [] ] 배열안에 배열. 행렬(matrix) 구조.
+
+        // 배열 함수
+        fruits.push("banana")   // 맨 뒤에 추가.
+        console.log(fruits)
+        fruits.pop();   // 맨 뒤에 삭제.
+        console.log(fruits)
+        fruits.unshift("orange");   // 맨 앞에 추가.
+        console.log(fruits)
+        fruits.shift()
+        console.log(fruits); // 맨 앞 삭제.
+        console.log(fruits.indexOf("orange")); // 오렌지라고 넣은 애의 인덱스를 반환해 달라.
+        console.log(fruits.includes("orange")); // 이 안의 넣은 값(오렌지)이 배열 안에 있는가?
+        console.log(fruits.includes("lemon")); // 있으면 true, 없으면 false 출력
+
+        // 7. object
+        let cat = {
+            name: '나비',
+            age: 1,
+            isCute: true,
+            // 함수도 객체(object) 안에 넣을 수 있음.
+            mew: function() {
+                console.log('냐옹');
+            }
+        }
+        console.log(cat);       // 전부 출력
+        console.log(cat.name);      // . 찍어서 개별 호출
+        console.log(cat.age);
+
+         // 8. typeof
+        console.log(typeof "문자");
+        console.log(typeof 123);
+        console.log(typeof true);
+        console.log(typeof cat);
+        console.log(typeof fruits);
+        console.log(typeof null);
+        console.log('typeof를 array나 null에 사용하면 ' + typeof{} + '결과를 얻을 수 있다.')
+
+        // 9. 형변환
+        // let mathScore = prompt('수학 점수를 입력해주세요.');
+        // let engScore = prompt('영어 점수를 입력해주세요.');
+
+        // let avg = (mathScore + engScore) / 2;
+        // console.log(avg);
+
+        // 1. 값 -> 문자 String()
+        let str1 = true;
+        let str2 = 123;
+        let str3 = null;
+
+        console.log(typeof String(str1));
+        console.log(typeof String(str2));
+        console.log(typeof String(str3));
+        // console.log(typeof str3.toString());        
+        // .을 찍는다 = 내가 지금 이 toString 이라는 애를 갖고있다. 라는 의미 그런데, null 이나 undefind는 값이 없기 때문에 오류가 난다.
+
+        // 2. 값 -> 숫자 Number()
+        let n1 = true;
+        let n2 = false;
+        let n3 = "123.9";
+
+        console.log(typeof Number(n1));
+        console.log(typeof Number(n2));
+        console.log(typeof Number(n3));
+        console.log(typeof Number('hello'));
+
+        // number로 바뀐 n1 ~ n3의 값 출력
+        console.log(Number(n1));        // true : 1
+        console.log(Number(n2));        // false : 0
+        console.log(Number(n3));
+        console.log(Number('hello'));       // NaN -> 타입은 number 지만 값은 NaN이 나온다.
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
