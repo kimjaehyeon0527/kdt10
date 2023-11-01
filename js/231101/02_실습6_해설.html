@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 해설</title>
+    <script>
+        // 전역변수 & 지역변수
+        // 전역 변수 > 지역변수 (범위가 크다.)
+        // but 지역변수가 좀 더 특별한 것.
+        let num1 = prompt('첫번째 숫자');
+        num1 = Number(num1);
+        let num2 = prompt('두번째 숫자');
+        num2 = Number(num2);
+
+        function add() {
+            let result = num1 + num2;
+            alert(result);
+        }
+        function sub() {
+            let result = num1 - num2;
+            alert(result);
+        }
+        function mul() {
+            let result = num1 * num2;
+            alert(result);
+        }
+        function div() {
+            let result = num1 / num2;
+            alert(result);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="add()">add</button>
+    <button onclick="sub()">sub</button>
+    <button onclick="mul()">mul</button>
+    <button onclick="div()">div</button>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 11</title>
+    <script>
+        // let num = prompt('숫자를 입력하시오. (0~100 사이 수)');
+        // let n = Number(num);
+        // let new_n = 0;
+
+        // while(n>=100) {
+        //     alert('숫자를 다시 입력하시오.');
+        //     let num2 = prompt('숫자를 입력하시오. (0~100 사이 수)');
+        //     let n = Number(num2);
+        //     if(n<100) {
+        //         new_n = n;
+        //         break;
+        //     }
+        // }
+        
+        // 다시 입력하는 것 추가.
+        let sum3 = 0;
+        let flag = true;
+        let n3, i = 0;
+
+        while(true) {
+            if(flag) n3 = Number(prompt('숫자를 입력하세요.'))
+            if(n3 >= 100 || n3 <= 0) {
+                alert('숫자를 다시 입력하세요.');
+                // continue;
+            } else {
+                flag = false;
+                if(i%2==0 || i%3==0) {
+                    sum3 += i;       
+                }
+                i++;
+                if(i == n3) break;
+            }
+        }
+        console.log(sum3);
+        
+        // let sum=0;
+
+        // for(let i=0; i<n; i++) {
+        //     if(i%2==0 || i%3==0) {
+        //         sum += i;       
+        //     }
+        // }
+        // console.log(sum);
+
+        // while(0 < n < 100){
+        //     if(n%2 == 0 || n%3 == 0) {
+        //         console.log(n)
+        //     }
+        //     n++;
+        //     break;
+        // }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

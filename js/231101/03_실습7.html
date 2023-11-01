@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 7</title>
+    <script>
+        let num1 = prompt('나이를 입력해 주세요.');
+        let age = Number(num1);
+        let str1 = prompt('성별을 입력해 주세요. (남 / 여)');
+        let gen = str1;
+
+        if (age >= 20 && gen =='남') {
+            console.log('성인 남자');
+        } else if(age >= 20 && gen =='여') {
+            console.log('성인 여성');
+        } else if (age >= 17 && gen =='남' ) {
+            console.log('고등 남학생');
+        } else if (age >= 17 && gen =='여' ) {
+            console.log('고등 여학생');
+        } else if (age >= 14 && gen =='남' ) {
+            console.log('중등 남학생');
+        } else if (age >= 14 && gen =='여' ) {
+            console.log('중등 여학생');
+        } else if (age >= 8 && gen =='남' ) {
+            console.log('초등 남학생');
+        } else if (age >= 8 && gen =='여' ) {
+            console.log('초등 여학생');
+        } else if (age >= 0 && gen =='남' ) {
+            console.log('남자 아이');
+        } else if (age >= 0 && gen =='여' ) {
+            console.log('여자 아이');
+        } else {
+            console.log('다시 입력 하시오.');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

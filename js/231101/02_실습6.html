@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onclick</title>
+    <script>
+        let num1 = prompt('첫 번째 숫자를 입력하시오.');
+        let num2 = prompt('두 번째 숫자를 입력하시오.');
+
+        function add(num1, num2) {
+            return Number(num1) + Number(num2);
+        } 
+        function minus(num1, num2) {
+            return Number(num1) - Number(num2);
+        } 
+        function multifly(num1, num2) {
+            return Number(num1) * Number(num2);
+        } 
+        function divide(num1, num2) {
+            return Number(num1) / Number(num2);
+        } 
+
+        
+        function test1() {
+            alert(add(num1,num2));
+        }
+        function test2() {
+            alert(minus(num1,num2));
+        }
+        function test3() {
+            alert(multifly(num1,num2));
+        }
+        function test4() {
+            alert(divide(num1,num2));
+        }
+    </script>
+</head>
+<body>
+    <button onclick="test1();">더하기</button>
+    <button onclick="test2();">빼기</button>
+    <button onclick="test3();">곱하기</button>
+    <button onclick="test4();">나누기</button>
+</body>
+</html>

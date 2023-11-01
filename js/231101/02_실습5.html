@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 만들기</title>
+    <script>
+        
+        function multifly(a, b) {
+            return a*b;
+        }
+        console.log(multifly(3,7));
+        console.log(multifly(2,2));
+
+        // * 해설 *
+        function multifly(num1, num2) {
+            return Number(num1) * Number(num2);
+        }
+        console.log(multifly(3,7));
+        console.log(multifly('2', 2));
+        //
+
+        function square(a) {
+            return a**2;
+        }
+        console.log(square(4));
+        console.log(square(11));
+        console.log(square(5));
+
+        // * 해설 *
+        function square(num1) {
+            let num = Number(num1);
+            console.log(num * num);
+            console.log(Number(num1) * Number(num1));
+        }
+        square(4);
+        square(11);
+        square(5);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

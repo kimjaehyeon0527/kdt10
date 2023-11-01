@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 11 해설</title>
+    <script>
+        let n = prompt('정수 n을 입력하세요. (단, 0 < n < 100)');
+        n = Number(n);
+        let sum = 0;
+
+        // for(let i = 0; i < n; i++) {
+        //     if(n <= 0 || n >= 100) {
+        //         alert('입력 값이 잘못 됐습니다.');
+        //         break;
+        //     }
+        //     else {
+        //         if(i % 2 == 0 || i % 3 == 0) sum += i;
+        //     }
+        // }
+        // console.log('sum:', sum);
+
+        let sum2 = 0;
+        let i = 0;
+        while(i < n) {
+            if(i % 2 == 0 || i % 3 == 0) sum2 += i;
+            i++;
+            if(n <= 0 || n >= 100) {
+                alert('입력 값이 잘못 됐습니다.');
+                break;
+            }
+        }
+        console.log('sum:', sum2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

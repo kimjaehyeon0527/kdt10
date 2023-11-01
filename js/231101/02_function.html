@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+    <script>
+        // 함수 호출
+        functionName();
+
+        // 1. 함수 선언문
+        function functionName() {
+            
+            console.log('안녕하세요');
+        }
+        // 2. 함수 표현식
+        let functionName2 = function(){
+            console.log('안녕하세요2');
+        }
+
+        // 함수 호출
+        functionName2();
+
+        // 3. 화살표 함수
+        let functionName3 = () => {
+            console.log('안녕하세요3');
+        }
+
+        // 함수 호출
+        functionName3();
+
+
+        // 매개변수가 있는 함수
+        // function 함수이름 (매개변수1, 매개변수2, ..)
+        function hello(name, age) { 
+             // name, age는 이 (hello)함수 안에서만 쓸 수 있는 변수이다.
+            console.log(name + "님 안녕하세요!");
+            console.log(age + "세");
+
+            // 반환값이 있는 함수
+            return age + 10;
+        }
+        let result = hello("홍길동", 10);
+        console.log('result :', result);
+
+        hello(1); // 값을 안 넣으면 undefined가 뜬다.
+        console.log('name: ', name)
+
+        // onclick
+        function test() {
+            alert('onclick test!');
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 100px; height: 100px; border: 1px solid black;" onclick="test();">test</div>
+</body>
+</html>

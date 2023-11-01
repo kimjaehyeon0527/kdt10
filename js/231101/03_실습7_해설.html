@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 7 해설</title>
+    <script>
+        // // if문 실습
+        // let age = prompt('몇 살이세요?');
+        // age = Number(age);
+        
+        // // 한 줄이면 중괄호를 생략 할 수 있다.
+        // if(age >= 20) console.log('성인');
+        // else if(age >= 17) console.log('고등학생');
+        // else if(age >= 14) console.log('중학생');
+        // else if(age >= 8) console.log('초등학생');
+        // else if(age >= 0) console.log('유아');
+
+        // 실습 추가
+        let age = prompt('몇 살이세요?');
+        let gender = prompt('성별은?');
+        age = Number(age);
+
+        // # 방법 1
+        if(age >= 20) {
+            if(gender=="여") console.log('성인 여자');
+            else if(gender =="남") console.log('성인 남자');
+        }
+        else if(age >= 17) console.log('고등학생');
+        else if(age >= 14) console.log('중학생');
+        else if(age >= 8) console.log('초등학생');
+        else if(age >= 0) console.log('유아');
+
+        // # 방법 2
+        if(gender == '여') {
+            if(age >= 20) console.log('성인 여자');
+            else if(age >= 17) console.log('고등학생');
+            else if(age >= 14) console.log('중학생');
+            else if(age >= 8) console.log('초등학생');
+            else if(age >= 0) console.log('유아');
+        } else if(gender == '남') {
+            if(age >= 20) console.log('성인 여자');
+            else if(age >= 17) console.log('고등학생');
+            else if(age >= 14) console.log('중학생');
+            else if(age >= 8) console.log('초등학생');
+            else if(age >= 0) console.log('유아');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
