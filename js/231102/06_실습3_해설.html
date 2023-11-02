@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function solution(n) {
+        var answer = '';
+        // * 방법 1 *
+        // for(let i=1; i<=n; i++){
+        //     i%2 == 1 ? answer += '수' : answer +='박';
+        // }
+        
+        // * 방법 2 *
+        // const watermelon = '수박';
+        // // n : 2 '수박수박'
+        // // n : 3 '수박수박수박'
+        // answer = watermelon.repeat(Number(n)).slice(0,n);
+
+        // * 방법 3 *
+        let repeatNum = Number(n) / 2;
+        // n: 2 -> '수박'
+        // n: 3 -> '수박'
+        answer = watermelon.repeat(repeatNum);
+        if (n % 2 == 1) answer += '수';
+
+        return answer;
+}
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

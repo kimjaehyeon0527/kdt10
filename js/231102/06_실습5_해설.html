@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 5 해설</title>
+    <script>
+        function solution(n) {
+            let answer = 0;
+            // 숫자 -> 문자열 배열 (For문 반복))
+            let arr = String(n).split("");
+
+            // forEach 문
+            arr.forEach((a) => answer += Number(a));
+
+            // for 문
+            for(let i = 0; i < arr.length; i++) {
+                answer += Number(arr[i]);
+            }
+
+            // 숫자로 할 때
+            while (n >= 10) {
+                // 123 % 10 = 3
+                answer += n % 10; // 일의 자리
+                n = parseInt(n / 10);       // parseInt : 숫자로 바꾼 값에서 정수 값만
+                                            // '123.1' -> parseInt : 123, Number : 123.1
+            }
+            answer += n;
+
+        return answer;
+    }
+    console.log(solution(234));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

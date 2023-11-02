@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>programmers 2</title>
+    <script>
+        function solution(n) {
+            var answer = 0;
+            for(i=0; i<=n; i++) {
+                // 약수 합 구하기
+                if(n%i == 0) {
+                    answer += i;
+                } 
+            }
+            // console.log(answer);
+            return answer;
+        }
+        // solution(12);
+        let s = solution(12);
+        console.log(s)
+        console.log(solution(5));
+
+        // 함수 안에서 return을 만나면 함수가 바로 끝나서 밖으로 나온다.
+        // // 함수안에 콘솔을 넣을 경우 밖에서 함수를 호출 할때 방법으로 한 것 일뿐.
+        // 프로그래머스 문제는 굳이 콘솔을 안찍어도 된다. 눈에 보이려고 하는것이기 때문.
+        // return의 역할을 아는 것일 뿐.
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

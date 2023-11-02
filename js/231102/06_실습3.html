@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>programmers</title>
+    <script>
+        let str = '';
+        for(i=0; i<=10000; i++){
+
+            // 짝수일때 '수
+            if (i%2==0) {
+                str += '수';
+            }
+            else str += '박';
+        }
+
+        function solution(n) {
+            var answer = str.slice(0, n);
+            console.log(answer);
+        }
+
+        solution(3);
+        solution(4);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

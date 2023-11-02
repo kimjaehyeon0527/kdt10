@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 6 해설</title>
+    <script>
+        function solution(numbers){
+            // * 방법 1
+            let answer = 0;
+            for (let i=0; i < 10; i++) {
+                if(!numbers.inclueds(i)) answer += i;
+            }
+
+            // * 방법 2
+            // for문으로 0~9 까지의 값을 갖는 배열을 만들어서 그 값과 비교
+            let test = [0,1,2,3,4,5,6,7,8,9];
+            // 만약에 수가 더 커지면 위에처럼 쓸 수 없으니 for문 이용 -> 반복이 더 많아짐.
+            test.forEach((t) => {
+                if(!test.includes(t)) answer += t;
+            })
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
