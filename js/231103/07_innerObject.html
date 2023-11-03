@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표준 내장 객체</title>
+    <script>
+        //표준 내장 객체
+        // : 자바스크립트가 기본적으로 가지고 있는 객체
+
+        // 1. Date
+        let now = new Date();       // now는 Date라는 객체가 된 것.
+        console.log(now);
+        console.log(now.getFullYear(), "년");
+        console.log(now.getMonth() + 1, "월");      // 0 ~ 11 이기 때문에 +1 해줘야 알맞는 월이 나옴.
+        console.log(now.getDate(), '일');
+        // 2023 - 11 - 03
+        console.log(now.getHours(), "시");
+        console.log(now.getMinutes(), "분");
+        console.log(now.getSeconds(), "초");
+        console.log(now.getMilliseconds(), "ms");
+        console.log(now.getDay());      // 0 ~ 6 / 0이 일요일 ~ 6이 토요일 -- 요일 계산
+
+        // Date를 객체를 이용해서 오늘 요일을 얻고, 오늘이 평일인지 주말인지 출력하기
+        let arr = ['일','월','화','수','목','금','토'];
+        for(let i=0; i<7; i++) {
+            
+        }
+
+        // *해설*
+        // switch 같은 경우 break문이 없는 경우 그 바로 밑에 조건 까지 실행 된다. // break 기준으로 움직인다.
+        // 각각의 case가 다 다르다 하면 break를 전부 넣어준다.
+        switch(now.getDay()) {
+            case 0 :
+            case 6 :
+                console.log('주말');
+                break;
+            default : console.log('평일');
+                break;
+        }
+
+        // 삼항 연산자
+        now.getDay() == 0 || now.getDay() == 6 ? console.log('주말') : console.log('평일');
+
+        // 2. Math 객체
+        // 속성
+        console.log(Math.PI);
+        console.log(Math.E);
+        console.log((Math.SQRT2));      // 루트 2
+
+        // 메소드
+        console.log(Math.min(45, 2, 0, -5, 15));
+        console.log(Math.max(45, 2, 0, -5, 15));
+        console.log(Math.random()); // 0 <= x < 1
+        console.log(Math.round(5.4));       // 반올림 : 정수값으로
+        console.log(Math.floor(5.1));          // 내림
+        console.log(Math.ceil(5.1));        // 올림
+        (123.13).toFixed(2);
+
+        // 1 <= x < 101
+        // 0 <= x < 100
+        // 0 <= x < 1
+        console.log(Math.floor(Math.random() * 100) + 1);
+
+
+
+
+        // * 블로그 작성 할 때 참고.
+        // console.log(Math.random());  
+        // // 0 ~ 0.9999999
+
+        // Math.floor(Math.random());
+        // // 0 <= x < 0    // 0 ~ 0
+        // Math.random()*10;
+        // // 0 <= x < 1    // 0 ~ 9.99999
+        // Math.floor(Math.random()*10);
+        // // 0 <= x < 10   // 0 ~ 9
+        // Math.floor(Math.random()*100 + 1);
+        // // 1 <= x < 101  // (0 ~ 99) + 1   
+                            // (1 ~ 100) == 1 <= x < 101
+
+        
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

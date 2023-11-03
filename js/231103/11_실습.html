@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단 계산기 만들기</title>
+    <script>
+        // 요소선택 시 형 변환 하면 안된다.
+        function calculate(){
+            let a = Number(document.getElementById('num1').value); // value 를 붙여야지 값으로 가져온다.
+            let b = Number(document.getElementById('num2'));
+            let c = String(document.getElementById('calc'));
+            let d = Number(document.getElementById('result'));
+            
+            console.log(a);
+            // 형 변환은 여기서!
+            if(c.value == '+') {
+                d.value = a.value+ b.value;
+            } else if (c.value == '-') {
+                d.value = (a.value - b.value);
+            } else if (c.value == '*') {
+                d.value = Number(a.value * b.value);
+            } else if (c.value == '/') {
+                d.value = Number(a.value / b.value);
+            }
+        };
+
+        function clear() {
+            document.getElementById('num1').clear;
+            document.getElementById('num2');
+            let c = (document.getElementById('calc'));
+            let d = (document.getElementById('result'));
+
+            // console.log(a);
+            // a.value = "";
+            // b.value = "";
+        }
+    </script>
+</head>
+<body>
+    값1 : <input type="text" name="" id="num1"> <br>
+    값2 : <input type="text" name="" id="num2"> <br>
+    연산자 : <input type="text" name="" id="calc"> <br>
+    결과 : <input type="text" name="" id="result"> <br><br>
+
+    <button onclick="calculate()">계산하기</button>
+    <button onclick="clear()">초기화</button>
+</body>
+</html>

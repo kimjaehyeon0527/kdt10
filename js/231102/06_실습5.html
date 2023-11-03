@@ -5,31 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>programmers 3</title>
     <script>
-        let sum = 0;
-        let num = "454";
+        function solution(n)
+    {
+        let answer = 0
+        let arr = String(n).split("");
 
-        let num2 = num.split("");
-        
-        console.log(num2);
-        for(i=0; i<num2.length; i++){
-        sum += Number(num2.index[i]);
+        for(let num of arr) {
+            answer += Number(num)
         }
-        console.log(sum);
-    //     function solution(n)
-    // {
-    //     var answer = 0;
-    //     let num = Number(n);
-    //     let num2 = num.split('')
-    //     console.log(num2);
-
-
-
-    //     // // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    //     // console.log('Hello Javascript')
-
-    //     return answer;
-    // }
-    // console.log(solution(454));
+        return answer;
+    }
     </script>
 </head>
 <body>
