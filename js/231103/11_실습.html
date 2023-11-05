@@ -8,32 +8,54 @@
         // 요소선택 시 형 변환 하면 안된다.
         function calculate(){
             let a = Number(document.getElementById('num1').value); // value 를 붙여야지 값으로 가져온다.
-            let b = Number(document.getElementById('num2'));
-            let c = String(document.getElementById('calc'));
-            let d = Number(document.getElementById('result'));
-            
-            console.log(a);
-            // 형 변환은 여기서!
-            if(c.value == '+') {
-                d.value = a.value+ b.value;
-            } else if (c.value == '-') {
-                d.value = (a.value - b.value);
-            } else if (c.value == '*') {
-                d.value = Number(a.value * b.value);
-            } else if (c.value == '/') {
-                d.value = Number(a.value / b.value);
+            let b = Number(document.getElementById('num2').value);
+            let c = String(document.getElementById('calc').value);
+            let d = (document.getElementById('result')); // value 붙이면 그냥 값이된다.
+            //value 안붙여야지 요소 선택자로써 기능을 가져서 .value 라는 속성을 사용해서 가져올수있다.
+
+            console.log(a)
+            console.log(b)
+            console.log(c)
+
+            if(c == '+') {
+                d.value = a + b;
+            } else if (c == '-') {
+                d = a - b;
+            } else if (c == '*') {
+                d = a * b;
+            } else if (c == '/') {
+                d = a / b;
             }
+            console.log(d);
+
+            
+            // let a = document.getElementById('num1'); 
+            // let b = document.getElementById('num2');
+            // let c = document.getElementById('calc');
+            // let d = document.getElementById('result');
+
+            // // 형 변환은 여기서!
+            // if(c.value == '+') {
+            //     d.value = Number(a.value) + Number(b.value);
+            // } else if (c.value == '-') {
+            //     d.value = Number(a.value) - Number(b.value);
+            // } else if (c.value == '*') {
+            //     d.value = Number(a.value) * Number(b.value);
+            // } else if (c.value == '/') {
+            //     d.value = Number(a.value) / Number(b.value);
+            // }
         };
 
-        function clear() {
-            document.getElementById('num1').clear;
-            document.getElementById('num2');
-            let c = (document.getElementById('calc'));
-            let d = (document.getElementById('result'));
-
-            // console.log(a);
-            // a.value = "";
-            // b.value = "";
+        function clean(){
+            let a = document.getElementById('num1'); 
+            let b = document.getElementById('num2');
+            let c = document.getElementById('calc');
+            let d = document.getElementById('result');
+            
+            a.value = '';
+            b.value = '';
+            c.value = '';
+            d.value = '';
         }
     </script>
 </head>
@@ -44,6 +66,6 @@
     결과 : <input type="text" name="" id="result"> <br><br>
 
     <button onclick="calculate()">계산하기</button>
-    <button onclick="clear()">초기화</button>
+    <button onclick="clean()">초기화</button>
 </body>
 </html>

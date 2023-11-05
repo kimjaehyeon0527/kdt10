@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    값1:
+    <input type="text" name="" id="v1"> <br>
+    값2:
+    <input type="text" name="" id="v2"> <br>
+    연산자:
+    <input type="text" name="" id="op"> <br>
+    결과:
+    <input type="text" name="" id="res"> <br>
+    <br><br>
+    <button onclick="cal();">계산하기</button>
+    <button onclick="reset()">초기화</button>
+
+    <script>
+        function cal() {
+            // 값1, 값2, 연산자에 대한 값을 읽어와야 함.
+            // 각각의 요소들을 1) 선택하고 2) 값을 가져오기
+            
+            // 1) 요소 선택
+            let v1 = document.getElementById('v1');
+            let v2 = document.getElementById('v2');
+            let op = document.getElementById('op');
+            console.log(v1, v2, op);
+            let res = document.getElementById('res');
+            
+            // 2) 값 가져오기
+            let v1Val = v1.value;
+            let v2Val = v2.value;
+            let opVal = op.value;
+            console.log((v1Val,v2Val,opVal));
+            console.log((typeof v1Val, typeof v2Val));
+
+            // 숫자로 형변환
+            v1Val = Number(v1Val);
+            v2Val = Number(v2Val);
+
+            let result = 0;
+            switch(opVal) {
+                case '+' : 
+                    result = v1Val + v2Val;
+                    break;
+                case '-' : 
+                    result = v1Val - v2Val;
+                    break;
+                case '*' : 
+                    result = v1Val * v2Val;
+                    break;
+                case '/' : 
+                    result = v1Val / v2Val;
+                    break;
+            }
+            console.log(result);
+            res.value = result;
+            // 결과창에다가 값을 할당해 준거다.
+
+            let resVal = document.getElementById('res').value;
+            // let resVal = '3'; 과 같은 느낌이다. 현재로썬 그냥 문자열이다.
+            resVal = result
+
+            // .value을 붙이게 되면 하나의 값이다. 'text' 값으로 존재, 요소X
+        }
+
+        function reset() {
+            let v1 = document.getElementById('v1');
+            let v2 = document.getElementById('v2');
+            let op = document.getElementById('op');
+            let res = document.getElementById('res');
+
+            v1.value = '';
+            v2.value = '';
+            op.value = '';
+            res.value = '';
+            // v1.setAttribute('value';,'');
+        }
+    </script>
+</body>
+</html>
