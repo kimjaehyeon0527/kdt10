@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>실습 1</title>
+    <style>
+        button {
+            width: 100px;
+            height: 80px;
+
+        }
+        img {
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+    <script>
+        function apple() {
+            $('.img').attr('src', '/imgs/사과.webp');
+        }
+        function banana() {
+            $('.img').attr('src', '/imgs/바나나.jpeg');
+        }
+        function shine() {
+            $('.img').attr('src', '/imgs/샤인머스캣.png');
+        }
+        function kiwi() {
+            $('.img').attr('src', '/imgs/키위.jpeg');
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 600px; height: 500px; border: 1px solid black; text-align: center;">
+        <img src="" alt="" class="img"><br>
+        <button onclick="apple()">사과</button>
+        <button onclick="banana()">바나나</button>
+        <button onclick="shine()">샤인머스캣</button>
+        <button onclick="kiwi()">키위</button>
+    </div>
+</body>
+</html>

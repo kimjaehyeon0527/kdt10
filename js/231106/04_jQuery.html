@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>jQuery 이벤트</title>
+    
+</head>
+<body>
+    <div class="container">
+        <input type="text">
+        <button>버튼</button>
+    </div>
+    <script>
+        console.log($(document));
+        // ready : 돔 트리 생성 완료 된 후 실행
+        // 로딩 될 때 바로 실행.
+        $(document).ready(function() {
+            $('.container').append('<h2>안녕 ready</h2>');
+        })
+
+        $(function() {
+            // ready와 동일
+            $('.container').append('<h2>안녕 ready2</h2>');
+        })
+
+        // ---------------------------------------- 구 분 선 ------------------------------------
+        // load
+        $(window).on('load', function() {
+            $('.container').append('<h2>안녕 load</h2>');
+        })
+
+        // ---------------------------------------- 구 분 선 ------------------------------------
+        $('button').click(function() {
+            alert('클릭 !');
+        })
+        
+        $('button').on('click', function() {
+            alert('클릭 on!');
+        })
+
+        // ---------------------------------------- 구 분 선 ------------------------------------
+        $('button').mouseover(function() {
+            alert('mouse over');
+        })
+
+        // ---------------------------------------- 구 분 선 ------------------------------------
+        $('input').keydown(function(e) {
+            console.log('e.targer : ',e.target);
+            // console.log('keydown');
+            console.log('this : ', this);   // e,target = this 역할은 같다.
+            console.log(e.key); // 현재 치는 키 찍어줌
+            if(e.key == 'Enter') alert('enter 입력');
+        })
+    </script>
+</body>
+</html>
