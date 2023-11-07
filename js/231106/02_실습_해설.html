@@ -16,9 +16,6 @@
     width: 100;
     height: 100;
     }
-    div:active {
-        
-    }
     div:hover {
     cursor: pointer;
     }
@@ -61,17 +58,21 @@
         
         // 방법 2
         function changeColor() {
-            let nowClass = $('div').attr('class');  // 현재 클래스 값 가져오기
-            // Q : 속성 변경? 단일로 쓰면 속성 값 선택?
+            let nowClass = $('div').attr('class');  // 현재 클래스 값 가져오기  // Q : 변수? 클래스?
+            console.log(nowClass);
+
+            // Q : 속성 변경? 단일로 쓰면 속성 값 선택?     // A : ㅇㅇ 단일로 쓰면 속성 선택이된다.
             // Q2 : red 값을 가져와서 nowClass에 넣고 nowClass의 인덱스 값을 i에 넣는다. 
             let i = colors.indexOf(nowClass); // 0 ~ 5 까지의 수 가 될 수 있다.
-            // 하나씩 찍어보자!
             
+            // 하나씩 찍어보자!
+            console.log(colors);    // red
+            console.log(i);         // 0
             // purple 일 때
             if(i == colors.length - 1)
                 $('div').switchClass(nowClass, colors[0]);
             else
-                $('div').switchClass(nowClass, colors[i+1]);
+                $('div').switchClass(nowClass, colors[i+1]); // Q : 클래스가 아니여도 되는건가??
         }
     </script>
     
