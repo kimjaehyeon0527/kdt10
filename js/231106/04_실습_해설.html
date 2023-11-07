@@ -108,28 +108,35 @@
     </table>
 
     <script>
-        $('td > p').on('click', function(){
-            let dayVal = document.getElementById('date');
-            dayVal.value = ($(this).text());                                // 현재 발생하는 이벤트 위치 값
-            result = this;                                                  // 전역변수 result에 this 값 저장.
+        // this를 기억하기 위한 전역변수
+        let target;
+
+        $('td > p').on('click', function() {
+            console.log(this);
+            // 날짜만 가져오려면 this의 text값을 가져와야 함
+            console.log($(this).text());
+
+            // 날짜, 내용 input 선택
+            // let date = $(this).text();
+            $('#date').val($(this).text());
+
+            // target에 this 기억해두기
+            target = this;
         })
 
-        function writeSchedul() {
-            let contents = $('#content').val();                             // 내용 칸에 값 -> contents 변수에 저장
+        function writeSchedule() {
+            let content = $('#content').val();
 
-            console.log(result);                                            // <p> 클릭한 날짜</p>
+            // 요소 추가
+            $(target).parent().append('<span>' + content + "</span><br />");
+            // $(target.parentNode).append(~~)
 
-            // 어떤 td에 넣어야 하는가? -> dayVal.value(=this) 값을 가지고 있는 td
-            // <p>클릭한 날짜</p> 부모 : 클릭한 날짜의 <td>
-            // $(result).parent().append(contents);                         // p태그를 안하면 구분없이 내용이 붙어서 계속 이어짐.
-
-            // 내용 초기화
-            $(content).val("");
+            // 초기화
+            $('#content').val("");
+            $('#date').val("");
         }
-    </script>
+
+
+    </script
 </body>
 </html>
-<!-- 
-    1. 클릭한 날짜 알 수 있는 이벤트 리스너 > 클릭한 요소 기억해두기
-    2. 작성 버튼 클릭 시 클릭한 날짜에 내용 추가.
--->
