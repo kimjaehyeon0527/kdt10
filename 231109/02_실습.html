@@ -19,9 +19,103 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous">
     </script>
-    <title>Document</title>
+
+    <style>
+        body {
+            height: 30000px;
+        }
+        .container {
+            display: flex;
+        }
+        .container2 {
+            display: flex;
+        }
+        #id {
+            border: 2px solid black;
+        }
+    </style>
+    <title>웹 페이지 만들기.</title>
 </head>
-<body>
+<body class="bg-primary-subtle">
+
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-book"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door-fill"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">웹툰</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        카테고리
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
     
+    <div class="container2 mt-5">
+        <div class="card" style="width: 18rem;">
+            <img src="/imgs/스1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">순정 빌런</h5>
+            <p class="card-text">특수능력을 가진 범죄자를 상대하기 위한 특수경찰이 존재하는 세계.
+                평화로운 나날을 보내던 최강의 특수경찰 '한도령'에게 감당할 수 없는 빌런이 찾아온다! 그런데 이 범죄자, 어딘가 이상하다?
+                최강의 히어로를 사랑하는 최악의 빌런 '박로사'의 우당탕탕 사랑이야기.</p>
+            <button type="button" class="btn btn-success">첫 화 보기</button>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="/imgs/스2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">마왕까지 한 걸음</h5>
+            <p class="card-text">"이건 그냥… 마을 사람 A랑 다를게 없잖아…, 나보다 강한 존재는 이 세계에 있을 수 없어!"
+                세계관 최강자 자리를 위해 지상최강 마왕을 찾아 뭍으로 나온 바다의 왕 유리아.
+                그런데… 거울을 보니 웬 어린아이가…?
+                다리를 얻음과 동시에 그녀의 모든 힘이 사라져 버렸다...
+                그럼에도 여전히 세계최강 자리를 노리고 있는 그녀의 눈물겨운 여정이 시작된다!!</p>
+                <button type="button" class="btn btn-primary">첫 화 보기</button>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="/imgs/스3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">네이처 맨</h5>
+            <p class="card-text">90년대 최고의 인기를 누렸던 전대 특촬물 '네이처맨'.
+                30년이 지난 지금, 누군가 네이처맨 배우들의 목숨을 노리고 있다.
+                다시 모인 네이처맨, 30년 전 그때처럼 다시 하나 되어 악에 맞서 싸워라!</p>
+                <button type="button" class="btn btn-dark text-white">첫 화 보기</button>
+            </div>
+        </div>
+    </div>
+    <div id="end" class="sticky-bottom">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+    </div>
 </body>
 </html>
