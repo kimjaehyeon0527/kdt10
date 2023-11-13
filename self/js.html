@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js연습</title>
-    <script>
-       for(let i=0; i <100; i++) {
-            if(i == 10) {
-                console.log('멈춰~');
-                continue;
-            }
-            // i == 10 일 때는 continue 밑에 코드는 실행 X
-            console.log(i);
-        }
-    </script>
+    
 </head>
 <body>
-    
+    <div class="container">
+        <div class="box" id="green">1</div>
+        <div class="box" id="red">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+    <input type="text" name="userName">;
+
+    <script>
+        let dom1 = document.getElementById('green');
+        console.log(dom1);
+
+        let dom2 = document.getElementsByClassName('box');
+        console.log('dom2 : ', dom2);
+
+        let dom3 = document.getElementsByTagName('div');
+        console.log(dom3);
+
+        let dom4 = document.getElementsByName("userName");
+        console.log(dom4);
+
+        let dom5 = document.querySelector('#red');
+        console.log(dom5);
+
+        let dom6 = document.querySelectorAll('div');
+        console.log(dom6);
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
+    <title>Document</title>
 
     <!-- CSS 불러오기 -->
     <link
@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="show-alert"></div>
-    <button type="button" class="btn btn-danger" id="btn">show-alert</button>
+    <button type="button" class="btn btn-danger" id="btn">show alert</button>
     <!-- <div id="liveAlertPlaceholder"></div>
     <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button> -->
-    <!-- -------------------------------------------- -->
+    <!-- ------------------------------- -->
     <!-- alert -->
     <div class="alert alert-primary" role="alert">primary alert</div>
     <div class="alert alert-secondary" role="alert">secondary alert</div>
@@ -45,37 +45,32 @@
             `<button type='button' class='btn-close' data-bs-dismiss="alert" aria-label="Close"></button>`,
             '</div>'
         ].join('');
-        // ['a','b','c'].join('') -> 'a b c'
 
         showAlert.append(newDiv);
     }
 
-    const btnTrigeger = document.querySelector('#btn');
-    btnTrigeger.addEventListener('click', () => {
+    const btnTrigger = document.querySelector('#btn');
+    btnTrigger.addEventListener('click', () => {
         appendAlert('알러트 보여주기 연습!', 'danger');
     })
+    // const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    // const appendAlert = (message, type) => {
+    //     const wrapper = document.createElement('div')
+    //     wrapper.innerHTML = [
+    //         `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    //         `   <div>${message}</div>`,
+    //         '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    //         '</div>'
+    //     ].join('')
 
+    //     alertPlaceholder.append(wrapper)
+    // }
 
-
-
-//     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-//     const appendAlert = (message, type) => {
-//         const wrapper = document.createElement('div')
-//         wrapper.innerHTML = [
-//             `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-//             `   <div>${message}</div>`,
-//             '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-//             '</div>'
-//         ].join('')
-
-//         alertPlaceholder.append(wrapper)
-//     }
-
-// const alertTrigger = document.getElementById('liveAlertBtn')
-//         if (alertTrigger) {
-//         alertTrigger.addEventListener('click', () => {
-//             appendAlert('Nice, you triggered this alert message!', 'success')
-//         })
-//     }
+    // const alertTrigger = document.getElementById('liveAlertBtn')
+    //     if (alertTrigger) {
+    //     alertTrigger.addEventListener('click', () => {
+    //         appendAlert('Nice, you triggered this alert message!', 'success')
+    //     })
+    // }
 </script>
 </html>

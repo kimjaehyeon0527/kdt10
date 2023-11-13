@@ -3,9 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>호텔 실습</title>
+    <title>실습3</title>
+    <!-- CSS 불러오기 -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+    />
+    <!-- JS 불러오기 -->    
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous">
+    </script>
+    <!-- icon용 Cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        .i1{
+            width: 320px;
+            height: 415px;
+            margin-top: 150px;
+            margin-left: 260px;
+        }
+        .i2{
+            width: 320px;
+            height: 415px;
+            margin-top: 150px;
+            margin-left: 860px;
+        }
+
+        @media screen and (480px <= width <= 850px) {
+            .i1{
+            width: 320px;
+            height: 415px;
+            margin-top: 150px;
+            margin-left: 0px;
+        }
+        .i2{
+            width: 320px;
+            height: 415px;
+            margin-top: 150px;
+            margin-left: 360px;
+        }
+        }
+    </style>
 </head>
-<body>
+<body >
+    <nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">웹툰</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">홈</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">웹툰</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  카테고리
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <nav style="--bs-breadcrumb-divider: '>'; margin-top: 70px;" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-heart"></i></a></li>
+          <li class="breadcrumb-item active" aria-current="page">웹툰</li>
+        </ol>
+      </nav>
+
+      <button type="button" class="btn btn-primary position-relative" style="margin-left: 1300px;">
+        알림
+        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </button>
+    <!-- data-aos-* 속성을 태그에다가 써주면 알아서 동작되게 된다 -->
+    <div data-aos="fade-up-right" class="i1">
+        <img src="/imgs/스1.png" alt="">
+    </div>
+    <div data-aos="fade-up-left" class="i2">
+        <img src="/imgs/스2.png" alt="">
+    </div>
+    <div data-aos="fade-up-right" class="i1">
+        <img src="/imgs/스3.png" alt="">
+    </div>
+    <div data-aos="fade-up-left" class="i2">
+        <img src="/imgs/스4.png" alt="">
+    </div>
+    <div data-aos="fade-up-right" class="i1">
+        <img src="/imgs/스5.png" alt="">
+    </div>
+    <div data-aos="fade-up-left" class="i2">
+        <img src="/imgs/스6.png" alt="">
+    </div>
+    <div data-aos="fade-up-right" class="i1">
+        <img src="/imgs/스7.png" alt="">
+    </div>
+
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
     
+
+
+
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>
