@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    <link rel="stylesheet" href="static/css/index.css"> 
+    <%- include('./component/head', {title: 'Home'})  %> <!-- head.ejs에 공용 css 적용-->
+    <!-- <link rel="stylesheet" href="/static/css/index.css">  -->
     <!-- static 까지 경로를 한번에 지정 -->
 </head>
 
@@ -15,5 +15,21 @@
         <div>hi~ <%= i %>번째</div>
         <%= i %>
             <% } %>
+
+        <!-- app.js에서 보낸 값이 프론트에 보내짐. -->
+        <!-- btns 버튼 -->
+        <% for(let btn of btns) { %>
+            <button type="button" class="btn btn-info"><%= btn  %></button>
+        <% } %>
+
+        <!-- 백에서 제어를 한걸 프론트로 가져와서 다룬다. -->
+        <!-- isLogin -->
+        <% if(!isLogin) { %>
+            <h4>아직 로그인을 안했군요!</h4>
+            <% } else { %>
+                <h4>로그인 완료!</h4>
+                <div><%= me.name %></div>
+                <div><%= me.msg %></div>
+                <% } %>
 </body>
 </html>

@@ -23,7 +23,24 @@ app.get('/', function (req, res){
     // res.send('<h1>Hello Express!</h1>')
 
         // index라는 파일명을 찾아서 해당 파일 렌더
-    res.render("index");
+        // 값을 보내주는 방법 , {} 그리고 객체형태
+    res.render("index", {
+        btns : ['사과','오렌지', '키위'],
+        isLogin : false,
+        me : {
+            name : 'Kim',
+            msg: '반갑습니다.'
+        }
+    });
+})
+
+// /login 경로로 접속했을 때
+app.get('/login', function (req, res){
+    res.render('login');
+})
+// /register 경로로 접속했을 때
+app.get('/register', function (req, res){
+    res.render('register');
 })
 
 // app.get('/kdt', function (req, res){
