@@ -93,9 +93,6 @@ class Rectangle extends Shape {
         return Math.sqrt(this.width**2 + this.height**2);
     }
 }
-const rec2 = new Rectangle(3,4);
-console.log(rec2.getdiagonal());
-
 class Triangle extends Shape {
     constructor (width, height) {
         super(width,height);
@@ -104,5 +101,20 @@ class Triangle extends Shape {
         return (this.width * this.height)/2;
     }
 }
+class circle extends Shape {
+    constructor (width, height, radius) {
+        super(width, height)
+        this.radius = radius;
+    }
+    getArea() {
+        return (this.radius)**2 * Math.PI;
+    }
+}
+const rec2 = new Rectangle(3,4);
+console.log(rec2.getdiagonal());
+
 const tri1 = new Triangle(3,4);
 console.log(tri1.getArea());
+
+const cir1 = new circle(3,4,5);
+console.log(cir1.getArea());
