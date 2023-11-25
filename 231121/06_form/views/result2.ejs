@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 결과</title>
+    <style>
+        span {
+            color: coral
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <div>이름 :
+        <span>
+            <%= questInfo.name %>
+        </span>
+    </div>
+    <div>성별 : 
+        <span>
+            <%= questInfo.men %>  <%= questInfo.women %>
+            <!-- 이렇게 구분할 필요없이 name을 통일시켜주면 된다. -->
+        </span>
+    </div>
+    <div>생년월일 : 
+        <span>
+            <%= questInfo.year %>년 <%= questInfo.month %>월 <%= questInfo.day %>일
+        </span>
+    </div>
+    <div>관심사 : 
+        <span>
+            <%= questInfo.trip %> <%= questInfo.passion %> <%= questInfo.food %>
+        </span>
+    </div>
+    <div>좋아하는 색상 : 
+        <span>
+            <%= questInfo.color %>
+        </span>
+    </div>
+    <div>좋아하는 숫자 : 
+        <span>
+            <%= questInfo.number %>
+        </span>
+    </div>
+    <script>
+        // 변수명으로 받아서 사용할 때
+        const color = '<%= myColor %>';
+        console.log(color);
+    </script>
+</body>
+</html>

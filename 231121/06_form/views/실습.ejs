@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습</title>
+</head>
+<body>
+    <!-- get 방식 -->
+    <h2>GET 실습</h2>
+    <form action="/quest" method="get">
+        <label for="name">이름</label>
+        <input type="text" name="name" >
+        <br>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="checkbox" name="men" value="남자">남자
+            <input type="checkbox" name="women" value="여자">여자
+        </fieldset>
+        <br>
+        <Fieldset>
+            <legend>생년월일</legend>
+            <select name="year" id="">
+                <% for(let i=0; i<50; i++) { %>
+                    <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
+                <% } %>
+            </select>
+            <label for="">년</label>
+            <select name="month" id="">
+                <% for(let i=0; i<12; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">월</label>
+            <select name="day" id="">
+                <% for(let i=0; i<31; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">일</label>
+        </Fieldset>
+        <br>
+        <Fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="trip" value="여행">여행
+            <input type="checkbox" name="passion" value="패션">패션
+            <input type="checkbox" name="food" value="음식">음식
+        </Fieldset>
+        <button>회원가입</button>
+    </form>
+
+    <h2>POST 실습</h2>
+    <!-- post 방식 -->
+    <form action="/quest" method="post">
+        <label for="name">이름</label>
+        <input type="text" name="name" >
+        <br>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="checkbox" name="men" value="남자">남자
+            <input type="checkbox" name="women" value="여자">여자
+            <!-- name 통일
+            <input type="checkbox" name="gender" value="남자">남자
+            <input type="checkbox" name="gender" value="여자">여자 -->
+        </fieldset>
+        <br>
+        <Fieldset>
+            <legend>생년월일</legend>
+            <select name="year" id="">
+                <% for(let i=0; i<50; i++) { %>
+                    <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
+                <% } %>
+            </select>
+            <label for="">년</label>
+            <select name="month" id="">
+                <% for(let i=0; i<12; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">월</label>
+            <select name="day" id="">
+                <% for(let i=0; i<31; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">일</label>
+        </Fieldset>
+        <br>
+        <Fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="trip" value="여행">여행
+            <input type="checkbox" name="passion" value="패션">패션
+            <input type="checkbox" name="food" value="음식">음식
+        </Fieldset>
+        <br>
+        <fieldset>
+            <legend>선택</legend>
+            <label for="">좋아하는 색상</label>
+            <input type="color" name="color" id="">
+            <br>
+            <label for="">좋아하는 숫자</label>
+            <input type="number" name="number" id="">
+        </fieldset>
+        <button>회원가입</button>
+    </form>
+</body>
+</html>
+
+<!-- name으로 읽는데 id는 그럼..? 무슨 필요 -->
