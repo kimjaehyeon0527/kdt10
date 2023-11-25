@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>실습</title>
+</head>
+<body>
+    <!-- get 방식 -->
+    <h2>GET 실습</h2>
+    <form name="good">
+        <label for="name">이름</label>
+        <input type="text" name="name" >
+        <br>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="checkbox" name="gender" value="남자">남자
+            <input type="checkbox" name="gender" value="여자">여자
+        </fieldset>
+        <br>
+        <Fieldset>
+            <legend>생년월일</legend>
+            <select name="birth" id="">
+                <% for(let i=0; i<50; i++) { %>
+                    <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
+                <% } %>
+            </select>
+            <label for="">년</label>
+            <select name="birth" id="">
+                <% for(let i=0; i<12; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">월</label>
+            <select name="birth" id="">
+                <% for(let i=0; i<31; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">일</label>
+        </Fieldset>
+        <br>
+        <Fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="hobby" value="여행">여행
+            <input type="checkbox" name="hobby" value="패션">패션
+            <input type="checkbox" name="hobby" value="음식">음식
+        </Fieldset>
+        <br>
+
+        <button type="button" onclick="axiosGet()">회원가입</button>
+        <div class="result"></div>
+    </form>
+    <br><br><br><br><br>
+    <h2>POST 실습</h2>
+    <!-- post 방식 -->
+    <form action="/quest" method="post">
+        <label for="name">이름</label>
+        <input type="text" name="name" >
+        <br>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="checkbox" name="men" value="남자">남자
+            <input type="checkbox" name="women" value="여자">여자
+            <!-- name 통일
+            <input type="checkbox" name="gender" value="남자">남자
+            <input type="checkbox" name="gender" value="여자">여자 -->
+        </fieldset>
+        <br>
+        <Fieldset>
+            <legend>생년월일</legend>
+            <select name="year" id="">
+                <% for(let i=0; i<50; i++) { %>
+                    <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
+                <% } %>
+            </select>
+            <label for="">년</label>
+            <select name="month" id="">
+                <% for(let i=0; i<12; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">월</label>
+            <select name="day" id="">
+                <% for(let i=0; i<31; i++) { %>
+                    <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                <% } %>
+            </select>
+            <label for="">일</label>
+        </Fieldset>
+        <br>
+        <Fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="trip" value="여행">여행
+            <input type="checkbox" name="passion" value="패션">패션
+            <input type="checkbox" name="food" value="음식">음식
+        </Fieldset>
+        <br>
+        <fieldset>
+            <legend>선택</legend>
+            <label for="">좋아하는 색상</label>
+            <input type="color" name="color" id="">
+            <br>
+            <label for="">좋아하는 숫자</label>
+            <input type="number" name="number" id="">
+        </fieldset>
+        <button>회원가입</button>
+    </form>
+
+    <script>
+        const resultBox = document.querySelector('.result');
+
+        function axiosGet() {
+            console.log('클릭');
+            const form = document.forms['good'];
+            const data = {
+                name: form.name.value,
+                gender: form.gender.value,
+                birth: form.birth.value,
+                hobby: form.hobby.value
+            };
+            axios({
+                method: 'get',
+                url: '/quest',
+                params: data
+            }).then((response) => {
+
+                console.log(response.data);
+                const data = response.data;
+
+                resultBox.textContent = `${data.name} 님의 성별은 ${data.gender}입니다. 
+                생년월일은 ${data.birth}이며 취미는 ${data.hobby}를 가지고 있습니다.`;
+            }).catch((error) => {
+                resultBox.textContent = `Error! 발생!`;
+            })
+        }
+    </script>
+</body>
+</html>
