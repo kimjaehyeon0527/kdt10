@@ -18,6 +18,16 @@ const PORT = 8001;
     res.send(req.query);
 })
 
+실습.post('/quest', (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
+    
+    
+})
+
+const userId = "aaaa";
+const userPw = "1234";
+
 실습.listen(PORT, function() {
     console.log(`${PORT} is opening!`);
 })

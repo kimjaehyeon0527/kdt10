@@ -14,25 +14,25 @@
         <br>
         <fieldset>
             <legend>성별</legend>
-            <input type="checkbox" name="men" value="남자">남자
-            <input type="checkbox" name="women" value="여자">여자
+            <input type="checkbox" name="gender" value="남자">남자
+            <input type="checkbox" name="gender" value="여자">여자
         </fieldset>
         <br>
         <Fieldset>
             <legend>생년월일</legend>
-            <select name="year" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<50; i++) { %>
                     <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
                 <% } %>
             </select>
             <label for="">년</label>
-            <select name="month" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<12; i++) { %>
                     <option value="<%= i + 1 %>"><%= i + 1 %></option>
                 <% } %>
             </select>
             <label for="">월</label>
-            <select name="day" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<31; i++) { %>
                     <option value="<%= i + 1 %>"><%= i + 1 %></option>
                 <% } %>
@@ -42,13 +42,14 @@
         <br>
         <Fieldset>
             <legend>관심사</legend>
-            <input type="checkbox" name="trip" value="여행">여행
-            <input type="checkbox" name="passion" value="패션">패션
-            <input type="checkbox" name="food" value="음식">음식
+            <input type="checkbox" name="hobby" value="여행">여행
+            <input type="checkbox" name="hobby" value="패션">패션
+            <input type="checkbox" name="hobby" value="음식">음식
         </Fieldset>
+        <br>
         <button>회원가입</button>
     </form>
-
+    <br><br><br><br><br>
     <h2>POST 실습</h2>
     <!-- post 방식 -->
     <form action="/quest" method="post">
@@ -105,5 +106,3 @@
     </form>
 </body>
 </html>
-
-<!-- name으로 읽는데 id는 그럼..? 무슨 필요 -->

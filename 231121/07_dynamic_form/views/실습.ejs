@@ -59,34 +59,31 @@
     <br><br><br><br><br>
     <h2>POST 실습</h2>
     <!-- post 방식 -->
-    <form action="/quest" method="post">
+    <form name="good2">
         <label for="name">이름</label>
         <input type="text" name="name" >
         <br>
         <fieldset>
             <legend>성별</legend>
-            <input type="checkbox" name="men" value="남자">남자
-            <input type="checkbox" name="women" value="여자">여자
-            <!-- name 통일
             <input type="checkbox" name="gender" value="남자">남자
-            <input type="checkbox" name="gender" value="여자">여자 -->
+            <input type="checkbox" name="gender" value="여자">여자
         </fieldset>
         <br>
         <Fieldset>
             <legend>생년월일</legend>
-            <select name="year" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<50; i++) { %>
                     <option value="<%= 2020 - i %>"><%= 2020 - i %></option>
                 <% } %>
             </select>
             <label for="">년</label>
-            <select name="month" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<12; i++) { %>
                     <option value="<%= i + 1 %>"><%= i + 1 %></option>
                 <% } %>
             </select>
             <label for="">월</label>
-            <select name="day" id="">
+            <select name="birth" id="">
                 <% for(let i=0; i<31; i++) { %>
                     <option value="<%= i + 1 %>"><%= i + 1 %></option>
                 <% } %>
@@ -96,9 +93,9 @@
         <br>
         <Fieldset>
             <legend>관심사</legend>
-            <input type="checkbox" name="trip" value="여행">여행
-            <input type="checkbox" name="passion" value="패션">패션
-            <input type="checkbox" name="food" value="음식">음식
+            <input type="checkbox" name="hobby" value="여행">여행
+            <input type="checkbox" name="hobby" value="패션">패션
+            <input type="checkbox" name="hobby" value="음식">음식
         </Fieldset>
         <br>
         <fieldset>
@@ -111,18 +108,49 @@
         </fieldset>
         <button>회원가입</button>
     </form>
+    <br><br><br><br>
+    <!-- axios 실습 -->
+    <form name="good3">
+        <div>
+            <label for="ID">ID</label>
+            <input type="text" name="ID" id="ID" placeholder="ID">
+        </div>
+        <div>
+            <label for="PW">PW</label>
+            <input type="password" name="PW" id="PW" placeholder="password">
+        </div>
+        <button type="button" onclick="axiosPost()">로그인</button>
+        <div class="result2"></div>
+    </form>
+    <br><br><br><br>
 
     <script>
         const resultBox = document.querySelector('.result');
+        const resultBox2 = document.querySelector('.result2');
 
         function axiosGet() {
-            console.log('클릭');
             const form = document.forms['good'];
+
+            // 선택된 성별 값을 검색
+            const gender = form.querySelector('input[name="gender"]:checked').value;
+
+            // 선택된 생년월일 값 검색
+            const birthYear = form.elements['birth'][0].value;
+            const birthMonth = form.elements['birth'][1].value;
+            const birthYDay = form.elements['birth'][2].value;
+            const birth = `${birthYear}년 ${birthMonth}월 ${birthYDay}일`;
+
+            // 선택된 취미 값 검색
+            const hobby = Array.from(form.elements['hobby'])    // 배열메서드를 사용하기 위해 배열로 변환.
+            .filter(checkbox => checkbox.checked)               // checked 속성이 true인 것만 필터링
+            .map(checkbox =>checkbox.value)                     // value 속성을 추출하여 새로운 배열 생성.
+            .join(',');                                         // 공백을 연결하여 하나의 문자열로 만들어줌.
+
             const data = {
                 name: form.name.value,
-                gender: form.gender.value,
-                birth: form.birth.value,
-                hobby: form.hobby.value
+                gender: gender,
+                birth: birth,
+                hobby: hobby
             };
             axios({
                 method: 'get',
@@ -137,6 +165,35 @@
                 생년월일은 ${data.birth}이며 취미는 ${data.hobby}를 가지고 있습니다.`;
             }).catch((error) => {
                 resultBox.textContent = `Error! 발생!`;
+            })
+        }
+        function axiosPost() {
+            const form = document.forms['good3'];
+            const data = {
+                ID: form.elements['ID'].value,
+                PW: form.elements['PW'].value
+            };
+            axios({
+                method: 'post',
+                url: '/quest',
+                data: data
+            }).then((response) => {
+                // const data = response.data;
+                console.log(response.data);
+                // ID, PW는 내가 입력한 값.
+                const { ID, PW } = response.data;
+                console.log(response.data.userId,ID);
+                if(data.ID === userId && data.PW === userPw) {
+                    // 로그인 성공
+                    resultBox2.style.color = 'blue';
+                    resultBox2.textContent = '로그인 성공!';
+                } else {
+                    // 로그인 실패
+                    resultBox2.style.color = 'red';
+                    resultBox2.textContent = '로그인 실패, 아이디 또는 비밀번호를 다시 확인해주세요.'
+                }
+            }).catch((error) => {
+                resultBox2.textContent = `Error! 발생!`;
             })
         }
     </script>

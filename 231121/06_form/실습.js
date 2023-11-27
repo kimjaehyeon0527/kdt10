@@ -4,7 +4,7 @@ const PORT = 8001;
 
 실습.set('view engine', 'ejs');
 // 실습.set('/views', 'views');
-실습.set('views', './views');
+실습.set('views', './views');       // view 템플릿 파일을 찾을 때 사용할 디렉토리 지정 // 기본적으로 views값이 디폴트 값이라서 알아서 찾아가준다.
 
 
 실습.use(express.urlencoded({extended: true})); // post 요청으로 들어오는 모든 형식의 데이터를 파싱
@@ -14,19 +14,15 @@ const PORT = 8001;
     res.render('실습');
 })
 
-실습.get('/test', (req, res) => {
-    res.render('./test/test');
-})
-
 실습.get('/quest', (req, res) => {
-    res.render('result2', { questInfo : req.query})
+    // res.render('result2', { questInfo : req.query})
+    res.render(req.query);
     // res.render('result2', {req.query})
 })
 
-실습.post('/quest', (req, res) => {
-    res.render('result2', { title: 'Post 실습' , questInfo : req.body})
-})
-
+// 실습.post('/quest', (req, res) => {
+//     res.render('result2', { title: 'Post 실습' , questInfo : req.body})
+// })
 
 실습.listen(PORT, function() {
     console.log(`${PORT} is opening!`);
