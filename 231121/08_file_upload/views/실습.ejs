@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>실습</title>
 </head>
 <body>
@@ -11,7 +13,7 @@
             <input type="text" name="Id" id="" placeholder="아이디">
         </div>
         <div>
-            <input type="text" name="Pw" id="" placeholder="비밀번호">
+            <input type="password" name="Pw" id="" placeholder="비밀번호">
         </div>
         <div>
             <input type="text" name="Name" id="" placeholder="이름">
@@ -23,5 +25,74 @@
         <br><br>
         <button>회원가입</button>
     </form>
+
+    <!-- 실습 해설 -->
+    <h2>일반 폼 전송(실습)</h2>
+    <hr>
+    <form action="/upload/practice" method="post" enctype="multipart/form-data">
+        <input type="text" name="id" placeholder="아이디">
+        <input type="file" name="profile"><br><br>
+        <button>회원가입</button>
+    </form>
+
+    <h2>동적 폼 전송(실습)</h2>
+    <hr>
+    <form name="submit">
+        <input type="text" name="id" placeholder="아이디">
+        <input type="file" name="profile"><br><br>
+        <button type="button" onclick="register()">회원가입</button>
+    </form>
+
+    <script>
+        function register() {
+            const form = document.forms['submit'];
+            const formData = new FormData();
+            // input 요소 선택 가져오기 !
+            console.log(form.id);       // id 요소
+            console.log(form.profile);  // 파일 요소
+
+            console.log(form.profile.files);
+            console.log(form.profile.files[0].name);
+
+            const file = form.profile.files[0];
+            const fileName = form.profile.files[0].name;
+            const userId = form.id.value;
+            
+
+            // ------------- 프론트에서 파일명 변경 -------------
+            // form.profile.files[0].name = form.id.value;
+            // console.log('변경 후 :', form.profile.files[0].name);
+            // 바뀌지 않는다. 이렇게는 파일 객체에 접근할 수가 없다.
+            //  ------------------------ 구 분 선 --------------------------
+            // 확장자 추출
+            // const ext = fileName.split('.')[1];
+            // console.log('ext >', ext);
+
+            // const newFile = new File([file], `${userId}.${ext}`, {type: file.type});
+            // console.log('newFile >', newFile);
+
+            // // 서버에서 보낸 키값이 필드값이 된다.
+            // ------------- 서버에서 파일명 변경 -------------
+            // multer 세부설정에서 req.body를 쓰고 싶다면, 파일을 맨 마지막에 append.
+            formData.append('id', userId);
+            formData.append('profile', newFile);
+
+            // 클라이언트에서 보내는 순서에 따라 req.body에 안들어갈수도 있다.
+            // 순서차이로 유저id가 들어간다.
+
+            axios({
+                method: 'post',
+                url: '/upload/practice2',
+                data: formData,
+                Headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((res) => {
+                console.log(res.data);
+            })
+        }
+    </script>
 </body>
 </html>
+<!-- 서버에서 파일이름을 바꿀수 있는지 -->
+<!-- 프론트에서 파일이름을 바꿀수 있는지 -->

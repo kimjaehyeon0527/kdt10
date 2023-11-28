@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과창</title>
+    <style>
+        img {
+            width: 400px;
+            height: 300px;
+            
+        }
+        span{
+            text-align: center;
+            color: coral;
+        }
+        .container{
+            text-align: center;
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>결과창</h1>
+    <img src="<%= imageUrl %>" alt="업로드된 이미지">
+    <div class="container">
+        <div>ID :
+            <span>
+                <%= upload.Id %>
+            </span>
+        </div>
+        <div>PW :
+            <span>
+                <%= upload.Pw %>
+            </span>
+        </div>
+        <div>name :
+            <span>
+                <%= upload.Name %>
+            </span>
+        </div>
+        <div>age :
+            <span>
+                <%= upload.Age %>
+            </span>
+        </div>
+    </div>
+</body>
+</html>

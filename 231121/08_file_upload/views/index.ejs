@@ -75,7 +75,7 @@
             console.log(file.files);    // 업로드한 파일 객체
             console.log(file.files[0]); // 업로드한 첫 파일
 
-            // append(key, value)
+            // append(key, value)   키값과 밸류 값으로 넣어주기.
             formData.append('dynamicFile', file.files[0]);
             formData.append('title', title.value);
 

@@ -20,9 +20,9 @@ const PORT = 8001;
     // res.render('result2', {req.query})
 })
 
-// 실습.post('/quest', (req, res) => {
-//     res.render('result2', { title: 'Post 실습' , questInfo : req.body})
-// })
+실습.post('/quest', (req, res) => {
+    res.render('result2', { title: 'Post 실습' , questInfo : req.body})
+})
 
 실습.listen(PORT, function() {
     console.log(`${PORT} is opening!`);
