@@ -75,7 +75,7 @@
             // ------------- 서버에서 파일명 변경 -------------
             // multer 세부설정에서 req.body를 쓰고 싶다면, 파일을 맨 마지막에 append.
             formData.append('id', userId);
-            formData.append('profile', newFile);
+            formData.append('profile', file);
 
             // 클라이언트에서 보내는 순서에 따라 req.body에 안들어갈수도 있다.
             // 순서차이로 유저id가 들어간다.
