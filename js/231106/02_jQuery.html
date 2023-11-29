@@ -71,12 +71,12 @@
             let green = document.querySelector('.green');
             // 추가할 요소 생성
             let li = document.createElement('li');
-            li.innerText = 'before JS';
+            li.innerText = 'after JS';
             green.after(li);
         }
 
         function afterJQ() {
-            $('.green').after('<li>before JQuery</li>');
+            $('.green').after('<li>after JQuery</li>');
         }
 
         // ---------------------------------------- 구 분 선 ------------------------------------
