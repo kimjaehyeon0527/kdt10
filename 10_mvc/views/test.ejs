@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>실습</title>
+    <style>
+        .success {
+            color: blue;
+            font-weight: 700;
+        }
+        .errer {
+            color: red;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- axios 실습 -->
+    <form name="good3">
+        <div>
+            <label for="ID">ID</label>
+            <input type="text" name="ID" id="ID" placeholder="ID">
+        </div>
+        <div>
+            <label for="PW">PW</label>
+            <input type="password" name="PW" id="PW" placeholder="password">
+        </div>
+        <button type="button" onclick="axiosPost()">로그인</button>
+        <div class="result2"></div>
+    </form>
+    <br><br><br><br>
+
+    <script>
+        const resultBox2 = document.querySelector('.result2');
+    
+        function axiosPost() {
+            const form = document.forms['good3'];
+            const data = {
+                ID: form.elements['ID'].value,
+                PW: form.elements['PW'].value
+            };
+            axios({
+                method: 'post',
+                url: '/quest',
+                data: data
+            }).then((response) => {
+
+                const {success} = response.data;    // 객체니까 한개여도 {}로 표시해야한다. 모든 구조 분할 // 구조 분할은 key값으로 구분한다.
+                console.log(response.data);
+                if(success==true) {
+                    // 로그인 성공
+                    resultBox2.style.color = 'blue';
+                    resultBox2.textContent = '로그인 성공!';
+                } else {
+                    // 로그인 실패
+                    resultBox2.style.color = 'red';
+                    resultBox2.textContent = '로그인 실패, 아이디 또는 비밀번호를 다시 확인해주세요.'
+                }
+            }).catch((error) => {
+                resultBox2.textContent = `Error! 발생!`;
+            })
+        }
+        
+    </script>
+</body>
+</html>
