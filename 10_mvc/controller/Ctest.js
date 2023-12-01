@@ -5,11 +5,12 @@ exports.test = (req, res) => {
 }
 
 exports.quest = (req, res) => {
-    // res.send(req.body);
     // 클라이언트에서 전달한 ID, PW와 서버에 저장된 ID, PW 비교
     const {ID, PW} = req.body;
+    console.log(Tester.login())
 
-    if(ID === userId && PW === userPw) {
+    // userId, userPw => db데이터
+    if(ID === Tester.login().userId && PW === Tester.login().userPw) {
         res.send({success:true});
     } else {
         res.send({success:false});
