@@ -7,7 +7,7 @@
 
 // --- mysql 연결 ---
 const mysql = require('mysql2');
-const { login } = require('../../10_mvc/model/Test');
+// const { login } = require('../../10_mvc/model/Test');
 
 // DB 연결
 const conn = mysql.createConnection({
@@ -19,15 +19,24 @@ const conn = mysql.createConnection({
 
 // ------ 콜백 함수 ------
 exports.getVisitors = (cb) => {
+    // query( sql, values? ,콜백함수 ) -> 1번쨰 인자 : sql, 2번째 인자 : 콜백함수
     conn.query(`SELECT * FROM visitor`, (err, rows) => {
-        if(err) throw err;
+        // DB 데이터 가져온 후 실행.
+        if (err) throw err;
 
         console.log('Visitor.js >', rows);
-        cb(rows);
+        /**
+         * [
+            { id: 1, name: '홍길동', comment: '내가 왔다.' },   
+            { id: 2, name: '이찬혁', comment: '으라차차' }      ]
+         */
+        cb(rows);   // 컨트롤러로 결과값을 넘겨줌
     })
 }
 
 exports.postVisitor = (data, cb) => {
+    // data: 우리가 넘겨준 req. body
+    // cb: 콜백함수
     console.log('postVisitor >', data);
 
     /*
@@ -44,6 +53,6 @@ exports.postVisitor = (data, cb) => {
         if (err) throw err;
 
         console.log('Visitor.js >', rows);
-        cb(rows.insertId);
+        cb(rows.insertId);  // 콜백함수 호출, 매개변수로 3이라는 값.
     })
 }
