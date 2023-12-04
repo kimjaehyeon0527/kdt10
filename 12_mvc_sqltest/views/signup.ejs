@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- visitor.js -->
+    <script defer src="/static/signup.js"></script>
     <title>회원가입</title>
 </head>
 <body>
     <h1>회원가입</h1>
-    ID <input type="text" name="" id=""> <br>
-    Password <input type="text" name="" id=""> <br>
-    Name <input type="text" name="" id=""> <br>
-    <button>Register</button>
+
+    <form name="Register-form">
+        ID <input type="text" name="" id="id"> <br>
+        Password <input type="password" name="" id="password"> <br>
+        Name <input type="text" name="" id="name"> <br>
+        <button type="button" onclick="Register()">Register</button> <br>
+    </form>
+    <a href="/user/signin">Login</a>
 </body>
 </html>

@@ -6,6 +6,11 @@ const controller = require('../controller/Cuser');
 router.get('/user', controller.main); 
 
 // GET /8000/user/signup
-router.get('/user/signup', controller.sign);
+router.get('/user/signup', controller.signup);
+
+router.post('/user/signup', controller.Register_signup);
+
+// GET /8000/user/signin
+router.get('/user/signin', controller.signin);
 
 module.exports = router;

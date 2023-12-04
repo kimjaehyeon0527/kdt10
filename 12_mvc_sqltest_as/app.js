@@ -8,8 +8,8 @@ app.use('/static', express.static(__dirname + '/static'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const indexRouter = require('./routes/user'); // user.js
-app.use('/', indexRouter);
+const indexRouter = require('./routes/user'); // user.js // localhost:8000/user 가 기본 경로
+app.use('/user', indexRouter);
 
 app.get('*', (req, res) => {
     res.render('404');

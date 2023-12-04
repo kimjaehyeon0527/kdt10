@@ -562,3 +562,11 @@ alter user 'user'@'localhost' identified by '1234';	 -- 비밀번호 변경
 
 -- 저장
 flush privileges;
+
+-- user 계정 생성
+create user 'user'@'localhost' identified by '1234';
+-- user 계정에 DB 권한 부여 (모든 DB에 접근 가능하도록)
+GRANT ALL privileges on *.* to 'user'@'localhost' with grant option;
+
+-- 현재 사용중인 MySQL 캐시 지우고 새로운 설정 적용
+flush privileges;
