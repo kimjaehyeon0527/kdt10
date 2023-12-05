@@ -1,4 +1,8 @@
-const Visitor = require('../model/Visitor');
+// [After]
+// models: models/index에서 export한 db 객체
+const models = require('../models/index');
+const Visitor = models.Visitor;     // models 안에 있는 Visitor를 사용.
+
 
 // GET /
 exports.main = (req, res) => {
@@ -8,31 +12,38 @@ exports.main = (req, res) => {
 // GET /visitor
 exports.get_visitors = (req, res) => {
     // [Before]
-    // console.log(Visitor.getVisitors()); // [ {}, {}]
-    // res.render('visitor', { data: Visitor.getVisitors() });
+    // Visitor.getVisitors((result) => {
+    //     // 모델에 rows를 result라는 변수명으로 받음
+    //     console.log('Cvisitor.js >', result);
+    //     res.render('visitor', { data: result });
+    // })
 
     // [After]
-    // 컨트롤러 -> 모델 -> DB -> 모델 -> 컨트롤러 -> 응답
-    // 콜백함수를 써준 이유 -> 비동기 처리를 하기위해서 
-    // 1) Visitor.getVisitors() // 함수 호출
-    // 2) 모델에서 데이터값 받은 후에 콜백 함수 실행
-    Visitor.getVisitors((result) => {
-        // 모델에 rows를 result라는 변수명으로 받음
-        console.log('Cvisitor.js >', result);
+    //  SELECT * FROM visitor
+    Visitor.findAll().then((result) => {
+        console.log('findAll >', result);   // [ {}, {}, ... ]
         res.render('visitor', { data: result });
     })
 }
-
 // POST /visitor
 exports.post_visitor = (req, res) => {
     console.log(req.body);
     const { name, comment } = req.body;
-    // 요청 시 컨트롤러에서 모델에 필요한 값을 넘겨줘야 함
-    // Visitor.postVisitor( view에서 받아온 데이터, 콜백 함수 ) 호출
-    Visitor.postVisitor(req.body, (result) => {
-        // result: rows.insertId => ex) 3
-        console.log(result);
-        res.send({ id: result, name, comment });
+    // [Before]
+    // Visitor.postVisitor(req.body, (result) => {
+    //     console.log(result);
+    //     res.send({ id: result, name, comment });
+    // })
+
+    // [After]
+    // 'INSERT INTO visitor (name, comment) VALUES ( ? , ? )';
+    Visitor.create({
+        // table에 있는 칼럼들.
+        name: name,
+        comment: comment
+    }).then((result) => {
+        console.log('create >', result);
+        res.send(result);   // { id: 3, name: '바나나', comment: '안녕' }
     })
 }
 
@@ -41,11 +52,19 @@ exports.get_visitor = (req, res) => {
     console.log(req.query); // { id: '1' }
     console.log(req.query.id);
 
-    // 모델에 함수 호출
-    Visitor.getVisitor(req.query.id, (result) => {
-        // result: rows[0] -> { id: 1, name: '홍길동', comment: '내가 왔다.' }
-        console.log('get_visitor Cvisitor.js >', result);
-        res.send(result);
+    // // 모델에 함수 호출
+    // Visitor.getVisitor(req.query.id, (result) => {
+    //     // result: rows[0] -> { id: 1, name: '홍길동', comment: '내가 왔다.' }
+    //     console.log('get_visitor Cvisitor.js >', result);
+    //     res.send(result);   
+    // })
+    // [After]
+    // 'SELECT * FROM visitor WHERE id = ?';
+    Visitor.findOne({
+        where: { id: req.query.id }
+    }).then((result) => {
+        console.log('findOne >', result);
+        res.send(result)
     })
 }
 
@@ -53,11 +72,18 @@ exports.get_visitor = (req, res) => {
 exports.get_visitor2 = (req, res) => {
     console.log(req.params); // { id: '1' }
     console.log(req.params.id);
-
-    // 모델에 함수 호출
-    Visitor.getVisitor(req.params.id, (result) => {
-        // result: rows[0] -> { id: 1, name: '홍길동', comment: '내가 왔다.' }
-        console.log('get_visitor2 Cvisitor.js >', result);
+    // [Before]
+    // Visitor.getVisitor(req.params.id, (result) => {
+    //     console.log('get_visitor2 Cvisitor.js >', result);
+    //     res.send(result);
+    // })
+    
+    // [After]
+    // 'SELECT * FROM visitor WHERE id = ?';
+    Visitor.findOne({
+        where: { id: req.params.id }
+    }).then((result) => {
+        console.log('findOne2 >', result);
         res.send(result);
     })
 }
@@ -65,9 +91,24 @@ exports.get_visitor2 = (req, res) => {
 // PATCH /visitor
 exports.patch_visitor = (req, res) => {
     console.log(req.body); // { id: 4, name: '바나나맛', comment: '우유' }
-
-    Visitor.patchVisitor(req.body, (result) => {
-        console.log('patchVisitor Cvisitor.js >', result);
+    // [Before]
+    // Visitor.patchVisitor(req.body, (result) => {
+    //     console.log('patchVisitor Cvisitor.js >', result);
+    //     res.send('수정 성공!');
+    // })
+    
+    // [After]
+    // 'UPDATE visitor SET name = ?, comment = ? WHERE id = ?'
+    Visitor.update({
+        name: req.body.name,
+        comment: req.body.comment
+    },
+    {
+        where: {
+            id: req.body.id,
+        }
+    }).then((result) => {
+        console.log('update >', result); // [1]
         res.send('수정 성공!');
     })
 }
@@ -76,9 +117,18 @@ exports.patch_visitor = (req, res) => {
 exports.delete_visitor = (req, res) => {
     console.log(req.body);
     console.log(req.body.id);
+    // [Before]
+    // Visitor.deleteVisitor(req.body.id, (result) => {
+    //     console.log('deleteVisitor Cvisitor.js >', result);
+    //     res.send('삭제 성공!');
+    // })
 
-    Visitor.deleteVisitor(req.body.id, (result) => {
-        console.log('deleteVisitor Cvisitor.js >', result);
+    // [After]
+    // DELETE FROM visitor WHERE id = ?
+    Visitor.destroy({
+        where: { id: req.body.id }
+    }).then((result) => {
+        console.log('destory >', result);   // 1
         res.send('삭제 성공!');
     })
 }
