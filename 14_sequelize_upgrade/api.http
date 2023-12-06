@@ -1,4 +1,51 @@
 @server = http://localhost:8000
+@player_id = 6
+@team_id = 2
 
 ### 전체 선수 조회
-GET {{{server}}}/players
+GET {{server}}/players
+
+// players -> routes/index.js의 router 연결
+// controller/Cmain.js의 쿼리문 작성
+
+### 특정 선수 조회
+GET {{server}}/players/{{player_id}}
+// 플레이어 6번인 선수의 내용이 나온다.
+// findOne때 값이 없는걸 찾는것은 에러가 아니다.
+// => 값이 있는지 없는지 판단 할 때 사용 가능.
+
+### 선수 추가
+POST {{server}}/players
+Content-Type: application/json; charset=UTF-8
+
+{
+    "name" : "손흥민",
+    "age" : 30,
+    "team_id" : 2
+}
+
+### 특정 선수의 소속 팀 변경
+PATCH {{server}}/players/{{player_id}}/team
+Content-Type: application/json; charset=UTF-8
+
+{
+    "team_id" : 3
+}
+
+### 특정 선수 삭제 (player_id에 해당하는 player, Profile 연쇄 삭제)
+DELETE {{server}}/players/{{player_id}}
+
+### 전체 팀 조회
+GET {{server}}/teams
+
+### 전체 팀 조회 - 이름순 오름차순
+GET {{server}}/teams?sort=name_asc
+
+### 전체 팀 조회 - 팀 이름 검색
+GET {{server}}/teams?search=lg
+
+### 특정 팀 조회
+GET {{server}}/teams/{{team_id}}
+
+### 특정 팀의 모든 선수 조회
+GET {{server}}/teams/{{team_id}}/players

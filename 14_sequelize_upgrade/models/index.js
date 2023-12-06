@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
-const config = require(__dirname + '/../config/config.json')
-['development'];
+const config = require(__dirname + '/../config/config.json')['development'];
 
 const db = {};
 
@@ -20,13 +19,17 @@ const Team = require('./Team')(sequelize, Sequelize);
 
 //  1) Player : Profile = 1 : 1
 //  한 선수당 하나의 프로필을 가짐
-Player.hasOne (Profile, { foreignKey: 'player_id', sourceKey : 'player_id', 
-                            // 연쇄 삭제, 수정
-                            onDelete: 'CASCADE', onUpdate: 'CASCADE',
+Player.hasOne (Profile, { 
+    foreignKey: 'player_id', 
+    // 기본키 가 외래키 일땐 생략 가능하다 (sourcekey와 targetKey) -> 기본키가 아니면 명시해줘야함.
+    // sourceKey : 'player_id', 
+    // 연쇄 삭제, 수정
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
 })
 Profile.belongsTo(Player, {
     foreignKey: 'player_id',
-    targetKey: 'player_id'
+    // targetKey: 'player_id'
 })
 
 //  2) Team : Player = 1:n
