@@ -43,8 +43,9 @@ app.get('/name', (req, res) => {
 
 })
 
-app.get('/destory', (req, res) => {
+app.get('/destroy', (req, res) => {
     req.session.destroy((err) => {
+                // 삭제하고 실행될 함수
         if (err) {
             console.log(err);
             res.send('fail');

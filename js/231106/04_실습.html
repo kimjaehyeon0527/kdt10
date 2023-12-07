@@ -114,14 +114,15 @@
             result = this;                                                  // 전역변수 result에 this 값 저장.
         })
 
-        function writeSchedul() {
+        function writeSchedule() {
             let contents = $('#content').val();                             // 내용 칸에 값 -> contents 변수에 저장
 
             console.log(result);                                            // <p> 클릭한 날짜</p>
 
             // 어떤 td에 넣어야 하는가? -> dayVal.value(=this) 값을 가지고 있는 td
             // <p>클릭한 날짜</p> 부모 : 클릭한 날짜의 <td>
-            // $(result).parent().append(contents);                         // p태그를 안하면 구분없이 내용이 붙어서 계속 이어짐.
+            // $(result).parent().append(contents);                         // p, span태그를 안하면 구분없이 내용이 붙어서 계속 이어짐.
+            $(result).parent().append('<span>' + contents + "</span> <br/>");
 
             // 내용 초기화
             $(content).val("");

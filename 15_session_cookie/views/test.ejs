@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2</title>
+</head>
+<body>
+    <form name="good3">
+        <div>
+            <label for="ID">ID</label>
+            <input type="text" name="ID" id="ID" placeholder="ID">
+        </div>
+        <div>
+            <label for="PW">PW</label>
+            <input type="password" name="PW" id="PW" placeholder="password">
+        </div>
+        <button type="button" onclick="axiosPost()">로그인</button>
+        <div class="result2"></div>
+    </form>
+    <br><br><br><br>
+
+    <script>
+        const resultBox2 = document.querySelector('.result2');
+        function axiosPost() {
+            const form = document.forms['good3'];
+
+            const data = {
+                Id: form.ID.value,
+                PW: form.PW.value
+            }
+
+        // form validation
+        if(!form.ID.checkValidity() || !form.PW.checkValidity()) {
+            resultBox2.textContent = '아이디와 패스워드는 필수 값입니다.'
+            return;
+        }
+
+        axios({
+            method: 'post',
+            url: '/',
+            data: data          // 'post'는 data로
+        }).then((response) => {
+            console.log(response.data);
+
+            if(response.data.isSuccess) {
+                // 로그인 성공
+                resultBox2.textContent = `${response.data.userInfo.ID}님! 로그인성공!`
+                resultBox2.classList.remove('error');
+                resultBox2.classList.add('success');
+            } else {
+                resultBox2.textContent = `아이디 또는 패스워드가 잘못됐습니다.`
+                resultBox2.classList.remove('success');
+                resultBox2.classList.add('error');
+            }
+        })
+        }
+    </script>
+</body>
+</html>
