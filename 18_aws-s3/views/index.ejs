@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- axios CDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        img {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
     <title>AWS S3</title>
 </head>
 <body>
@@ -17,6 +23,8 @@
 
     <script>
         const resultBox = document.querySelector('.result');
+        const img = document.createElement('img');
+        
 
         async function fileUpload() {
             const file = document.querySelector('#files');
@@ -36,10 +44,34 @@
                     url: '/upload',
                     data: formData,
                     headers: {
-                        'Content Type': 'multipart/form-data'
+                        'Content-Type': 'multipart/form-data'
                     }
                 })
-                console.log(res.data);;
+                console.log('res.data >', res.data); // [ {}, {} ] 배열의 형태 => location: src속성 값으로
+                // 그냥 내가 한 것
+                // if(res.data) {
+                //     img.src = res.data.location;
+
+                //     resultBox.appendChild(img);
+                // }
+            // GPT 참고
+            //     if (res.data && res.data.length > 0) {
+            //     for (let i = 0; i < res.data.length; i++) {
+            //         const img = document.createElement('img');
+            //         img.src = res.data[i].location;
+            //         resultBox.appendChild(img);
+            //     }
+            // }
+                // 배열이니까 foreach 사용
+            res.data.forEach((elem) => {
+                const img = document.createElement('img');
+                img.src = elem.location;
+                img.alt = elem.originalname;
+                img.style.width = '500px';
+
+                resultBox.appendChild(img);
+            })
+
             } catch(err) {
                 console.log('err > ', err);
             }
