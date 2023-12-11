@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>회원가입</title>
+</head>
+<body>
+    <h1>회원 가입</h1>
+    <form name="register-form">
+        ID <input type="text" name="userid" id="userid"> <br>
+        PW <input type="password" name="pw" id="pw"> <br>
+        Name <input type="text" name="name" id="name"> <br>
+        <button type="button" onclick="register()">가입</button>
+    </form>
+
+    <script>
+        async function register() {
+            const form = document.forms['register-form'];
+            
+            try {
+                const res = await axios({
+                    method: 'POST',
+                    url: '/',
+                    data: {
+                        id : form.userid.value,
+                        pw : form.pw.value,
+                        name : form.name.value
+                    }
+                })
+                console.log('res.data >', res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+</body>
+</html>
