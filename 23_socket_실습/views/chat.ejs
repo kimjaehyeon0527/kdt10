@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅창 UI만들기</title>
+    <!-- socket.io CDN -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .bbig_C {
+            width: 300px;
+        }
+        .big_C {
+            width: 300px;
+            height: 500px;
+            background-color: skyblue;
+            overflow-y: auto;
+        }
+        .msg {
+            display: flex;
+            justify-content: flex-start;
+            margin: 5px;
+        }
+
+        .user_R {
+            justify-content: flex-end;
+        }
+
+        .user_R .content {
+            background-color: yellow;
+        }
+
+        .user_L .content {
+            background-color: white;
+        }
+
+        .content {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* 실습[2] UI - laeder */
+        /* [실습2] 채팅창 UI */
+    .chat-list {
+      background-color: skyblue;
+      width: 50%;
+      height: 500px;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .chat-list div {
+      margin-top: 3px;
+    }
+
+    .chat-list div div {
+      display: inline-block;
+      padding: 3px;
+    }
+
+    .my-chat {
+      text-align: right;
+    }
+
+    .my-chat div {
+      background-color: yellow;
+    }
+
+    .other-chat div {
+      background-color: white;
+    }
+
+    /* [실습3] 채팅창 입장 안내 문구 */
+    .notice {
+        text-align: center;
+        color:  #005397;
+        font-size: 12px;
+    }
+    </style>
+</head>
+<body>
+    
+
+    <!-- [실습2] -->
+    <div class="bbig_C">   <!-- chat-box -->
+        <h1>Chat</h1>
+        <div class="big_C"> <!-- chat-list -->
+            <div class="msg user_R">    <!-- my-chat-->
+                <div class="content">안녕</div>
+            </div>
+            <div class="msg user_L">    <!-- other-chat-->
+                <div class="content">응 안녕?</div>
+            </div>
+        </div>
+        <input type="text" name="" id="">
+        <button type="button" onclick="send()">전송</button>
+    </div>
+
+
+
+    <!-- [실습2] 채팅 UI - leader -->
+    <main class="chat-box">
+        <div class="chat-list">
+          <!-- 임시 대화 데이터 -->
+          <div class="my-chat">
+            <div>user1 : msg1</div>
+          </div>
+          <div class="other-chat">
+            <div>user2 : msg2</div>
+          </div>
+        </div>
+    
+        <input type="text" id="message">
+        <button type="button" onclick="send()">전송</button>
+      </main>
+
+      <!-- [실습3] -->
+      <script>
+        const socket = io.connect();
+
+        socket.on('notice', (msg) => {
+            document.querySelector('.big_C').insertAdjacentHTML('beforeend', `<div class='notice'>${msg}</div>`);
+        })
+      </script>
+</body>
+</html>
