@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const { disconnect } = require('process');
 const socketIO = require('socket.io');
 
 const app = express();
@@ -14,7 +15,7 @@ const userObjs = {};
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('chat');
+    res.render('chat'); 
 })
 
 io.on('connection', (socket) => {
@@ -44,12 +45,13 @@ io.on('connection', (socket) => {
 
         if(data.dm === 'all') {
             // "전체" 한테 발송
-            io.emit('newMessage', {id: data.id, msg: data.msg});
+            io.emit('newMessage', {id: data.id, nickname: data.nickname, msg: data.msg});
         } else {
             // "DM" 발송
             const dmSocketId = data.dm;
             const sendData = {
                 id: data.id,
+                nickname: data.nickname,
                 msg: data.msg,
                 dm: '(DM) ',
             }
@@ -62,19 +64,32 @@ io.on('connection', (socket) => {
 
     // [실습 5] DM Step1
     socket.on('setUserList', (data) => {
-        console.log(`유저 입장 : `, data.id);
+        console.log(`유저 입장 : `, data.nickname);
         // 입장 전체 공지
-        io.emit('notice', `${data.id}님이 입장하셨습니다.`);
+        io.emit('notice', `${data.nickname}님이 입장하셨습니다.`);
 
         // 전체 사용자 아이디 모음 객체 전달
         // 새로운 유저
         // {data.id : data.id} // 소켓 아이디 키 값으로 소켓 아이디 밸류 값을 넣어줌.
-        userObjs[data.id] = data.id;
+        userObjs[data.id] = data.nickname;
         socket.emit('entrySuccess', socket.id);     // 현재 입장한 사람에게 입장 완료
         io.emit('updateUsers', userObjs);    // 전체 사용자에게 사용자 업데이트 
     })
 
+    socket.on('disconnection', (data) => {
+        // 연결이 끊긴 사용자를 userObjs에서 제거
+        delete userObjs[data.id];
+
+        // 다른 사용자에게 연결 해제를 알리기
+        io.emit('notice', `${data.nickname}님이 퇴장하셨습니다.`);
+
+        // 모든 클라이언트에 대해 사용자 목록을 업데이트
+        io.emit('updateUsers', userObjs);
+        socket.emit('leaveSuccess', socket.id);
+    })
 })
+
+        
 
 server.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);

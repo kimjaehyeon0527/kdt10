@@ -52,58 +52,31 @@
           background-color: pink;
         }
 
-        /* 실습[2] UI - laeder */
-        /* [실습2] 채팅창 UI */
-    .chat-list {
-      background-color: skyblue;
-      width: 50%;
-      height: 500px;
-      padding: 10px;
-      overflow-y: auto;
-    }
-
-    .chat-list div {
-      margin-top: 3px;
-    }
-
-    .chat-list div div {
-      display: inline-block;
-      padding: 3px;
-    }
-
-    .my-chat {
-      text-align: right;
-    }
-
-    .my-chat div {
-      background-color: yellow;
-    }
-
-    .other-chat div {
-      background-color: white;
-    }
-
-    /* [실습3] 채팅창 입장 안내 문구 */
-    .notice {
-        text-align: center;
-        color:  #005397;
-        font-size: 12px;
-    }
+        /* [실습3] 채팅창 입장 안내 문구 */
+        .notice {
+            text-align: center;
+            color:  #005397;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <!-- [실습 5] 채팅창 입장 버튼 -->
+
+    <input type="text" class="nick" id="nickname" placeholder="닉네임">
     <button type="button" onclick="join()" class="join-btn">입장</button>
+    <button type="button" onclick="leave()" class="">나가기</button>
+
 
     <!-- [실습 2] -->
     <main class="bbig_C d-none">   <!-- chat-box -->
         <h1>Chat</h1>
         <div class="big_C"> <!-- chat-list -->
             <div class="msg user_R">    <!-- my-chat-->
-                <div class="content">안녕</div>
+                <!-- <div class="content">안녕</div> -->
             </div>
             <div class="msg user_L">    <!-- other-chat-->
-                <div class="content">응 안녕?</div>
+                <!-- <div class="content">응 안녕?</div> -->
             </div>
         </div>
         <!-- 메세지 전송 영역 -->
@@ -138,6 +111,7 @@
             // 전체: all, dm: socket.id
 
             dm: document.getElementById('user-list').value,
+            nickname: document.getElementById('nickname').value,
             id: socket.id,
             msg: document.getElementById('message').value
           }
@@ -176,7 +150,7 @@
               divChat.textContent = data.dm;  // '(DM) '
             }
 
-            divChat.textContent += `${data.id} : ${data.msg}`;
+            divChat.textContent += `${data.nickname} : ${data.msg}`;
             div.append(divChat);
             big_C.append(div);
 
@@ -188,7 +162,8 @@
           // [실습 5] DM
           function join() {
             socket.emit('setUserList', {
-              id: socket.id
+              id: socket.id,
+              nickname: document.getElementById('nickname').value
             });
           }
 
@@ -196,6 +171,8 @@
           socket.on('entrySuccess', (id) => {
             // 버튼 비활성화
             document.querySelector('.join-btn').disabled = true;
+            // 닉네임 수정 불가능
+            document.querySelector('.nick').remove;
             // 채팅창 보이기
             document.querySelector('.bbig_C').classList.remove('d-none')
           })
@@ -210,14 +187,29 @@
             // todo : userObjs 반복 돌아서 option 태그를 추가해주기.
             // option 태그의 value값 socket.id값에 넣어주기.
             for(let key in userObjs) {
+              console.log('key >', key);  // id: 'MOgIhD-jFyFpnKPyAAAp'
+              console.log('value >', userObjs[key]);  // '잠만보'
               // 본인 제외
               if(key !== socket.id) {
-                options += `<option value='${key}'>${key}</option>`
+                // 서버가 필요한건 key, 즉 user의 id가 필요하다.
+                options += `<option value='${key}'>${userObjs[key]}</option>`
               }
             }
 
             document.querySelector('#user-list').innerHTML = options;
           })
+
+          function leave() {
+            socket.emit('disconnection', {
+              id: socket.id,
+              nickname: document.getElementById('nickname').value
+            })
+            socket.on('leaveSuccess', (id) => {
+            // 채팅창 안보이기
+            document.querySelector('.bbig_C').classList('d-none');
+          })
+          }
+          
       </script>
 </body>
 </html>
