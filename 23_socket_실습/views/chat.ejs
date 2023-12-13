@@ -44,6 +44,14 @@
             border-radius: 10px;
         }
 
+        /* [실습 5] */
+        .d-none {
+          display: none;
+        }
+        .secret-chat .content{
+          background-color: pink;
+        }
+
         /* 실습[2] UI - laeder */
         /* [실습2] 채팅창 UI */
     .chat-list {
@@ -84,10 +92,11 @@
     </style>
 </head>
 <body>
-    
+    <!-- [실습 5] 채팅창 입장 버튼 -->
+    <button type="button" onclick="join()" class="join-btn">입장</button>
 
-    <!-- [실습2] -->
-    <div class="bbig_C">   <!-- chat-box -->
+    <!-- [실습 2] -->
+    <main class="bbig_C d-none">   <!-- chat-box -->
         <h1>Chat</h1>
         <div class="big_C"> <!-- chat-list -->
             <div class="msg user_R">    <!-- my-chat-->
@@ -97,27 +106,12 @@
                 <div class="content">응 안녕?</div>
             </div>
         </div>
-        <input type="text" name="" id="">
+        <!-- 메세지 전송 영역 -->
+        <select id="user-list"></select>에게
+        <input type="text" name="" id="message" onkeydown="if(window.event.keyCode == 13){send()}">
         <button type="button" onclick="send()">전송</button>
-    </div>
+    </main>
 
-
-
-    <!-- [실습2] 채팅 UI - leader -->
-    <main class="chat-box">
-        <div class="chat-list">
-          <!-- 임시 대화 데이터 -->
-          <div class="my-chat">
-            <div>user1 : msg1</div>
-          </div>
-          <div class="other-chat">
-            <div>user2 : msg2</div>
-          </div>
-        </div>
-    
-        <input type="text" id="message">
-        <button type="button" onclick="send()">전송</button>
-      </main>
 
       <!-- [실습3] -->
       <script>
@@ -126,6 +120,104 @@
         socket.on('notice', (msg) => {
             document.querySelector('.big_C').insertAdjacentHTML('beforeend', `<div class='notice'>${msg}</div>`);
         })
+
+        // [실습 4] // 실습 5할땐 주석
+        // 1. 서버에 보내기
+        // function send() {
+        //   const data = {
+        //     id: socket.id,
+        //     msg: document.getElementById('message').value
+        //   }
+        //   socket.emit('send', data);
+        //   document.getElementById('message').value= ''    // 인풋 초기화
+        // }
+
+        // [실습 5]
+        function send() {
+          const data = {
+            // 전체: all, dm: socket.id
+
+            dm: document.getElementById('user-list').value,
+            id: socket.id,
+            msg: document.getElementById('message').value
+          }
+          socket.emit('send', data);
+          document.getElementById('message').value= '';    // 인풋 초기화
+        }
+
+        // 2. 서버에서 받아서 보여주기
+        socket.on('newMessage', (data) => {
+          // { id: 'S68gVxDsHEZqh3rWAAAD', msg: '안녕' }
+        
+
+        // 이 모양을 가져올 것
+        // <div class="msg user_R">    <!-- my-chat-->
+        //      <div class="content">안녕</div>
+        // </div>
+        // <div class="msg user_L">    <!-- other-chat-->
+        //      <div class="content">응 안녕?</div>
+        // </div>  
+
+            const big_C = document.querySelector('.big_C');
+            const div = document.createElement('div');  // User.R / L
+            const divChat = document.createElement('div') // 안쪽 content
+
+            divChat.classList.add('content'); // 'content' 클래스 추가
+
+            if(data.id === socket.id) {
+              // 내가 보낸 메시지
+              div.classList.add('msg', 'user_R');
+            } else {
+              div.classList.add('msg', 'user_L');
+            }
+
+            if (data.dm) {
+              div.classList.add('secret-chat')
+              divChat.textContent = data.dm;  // '(DM) '
+            }
+
+            divChat.textContent += `${data.id} : ${data.msg}`;
+            div.append(divChat);
+            big_C.append(div);
+
+            // 메세지가 많아져서 스크롤이 생기더라도 하단 고정됨.
+            big_C.scrollTop = big_C.scrollHeight;
+          })
+
+
+          // [실습 5] DM
+          function join() {
+            socket.emit('setUserList', {
+              id: socket.id
+            });
+          }
+
+          //  입장 성공 : 입장 버튼 비활성화, 채팅창 보이기
+          socket.on('entrySuccess', (id) => {
+            // 버튼 비활성화
+            document.querySelector('.join-btn').disabled = true;
+            // 채팅창 보이기
+            document.querySelector('.bbig_C').classList.remove('d-none')
+          })
+
+          //  유저 목록 업데이트 (select 박스의 option 태그 개수 변경)
+          socket.on('updateUsers', (userObjs) => {
+            // userObjs : {socket.id : socket.id, ...}
+            console.log('userList >', userObjs);
+          
+            let options = `<option value='all'>전체</option>`;
+
+            // todo : userObjs 반복 돌아서 option 태그를 추가해주기.
+            // option 태그의 value값 socket.id값에 넣어주기.
+            for(let key in userObjs) {
+              // 본인 제외
+              if(key !== socket.id) {
+                options += `<option value='${key}'>${key}</option>`
+              }
+            }
+
+            document.querySelector('#user-list').innerHTML = options;
+          })
       </script>
 </body>
 </html>
