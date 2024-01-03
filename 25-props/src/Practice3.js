@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 class Practice3 extends Component {
   render() {
+    // this.props.text, this.props.valid (구조분해 할당)
     const { text, valid } = this.props;
     return (
       <div>
@@ -18,7 +19,7 @@ Practice3.defaultProps = {
   text: '이건 기본 text props 입니다.',
 };
 
-Practice3.protoTypes = {
+Practice3.propTypes = {
   text: PropTypes.string,
 };
 
