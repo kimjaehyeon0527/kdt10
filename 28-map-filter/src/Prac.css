@@ -1,0 +1,30 @@
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 300px;
+}
+
+table th,
+table td {
+  border: 1px solid Black;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.container {
+  border: 1px solid black;
+  width: 500px;
+  padding: 20px;
+}
+input {
+  margin: 10px;
+}
+.smlcontainer {
+  margin: 10px;
+}
