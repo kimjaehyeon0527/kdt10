@@ -6,8 +6,6 @@ import { plus, minus } from '../store/counterReducer';
 
 function Box4() {
   const number = useSelector((state) => state.counter.number);
-  const rrr = useSelector((state) => state);
-  console.log(rrr);
   const dispatch = useDispatch();
 
   return (
