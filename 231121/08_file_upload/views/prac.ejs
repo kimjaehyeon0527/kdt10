@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>파일 업로드</h1>
+
+    <h2>Single file upload</h2>
+    <p>하나의 인풋에 하나의 파일을 업로드 하겠다.</p>
+
+    <!-- multer는 multipart가 아닌 폼에서는 동작 X 그래서 enctype=", multipart/form-data" 속성 필수 -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile" id="" /><br />
+      <input type="text" name="title" id="" /><br /><br />
+      <button>업로드</button>
+    </form>
+  </body>
+</html>

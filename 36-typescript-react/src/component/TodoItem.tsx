@@ -1,11 +1,20 @@
 import { TodoItemProp } from '../types/types';
 
-function TodoItem({ id, content, complated }: TodoItemProp) {
+interface Props {
+  todo: TodoItemProp;
+  toggleTodo: (id: number) => void;
+}
+
+function TodoItem({ todo, toggleTodo }: Props) {
   return (
     <li>
-      <label htmlFor="">
-        <input type="checkbox" defaultChecked={complated} />
-        {content}
+      <label>
+        <input
+          type="checkbox"
+          defaultChecked={todo.complated}
+          onChange={() => toggleTodo(todo.id)}
+        />
+        {todo.content}
       </label>
     </li>
   );

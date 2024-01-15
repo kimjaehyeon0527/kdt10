@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CommentList from './chapter01/CommentList';
 
-import Library from './chapter_03/Library';
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
-    <Library />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <CommentList />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

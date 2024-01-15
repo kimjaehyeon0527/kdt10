@@ -26,6 +26,6 @@ root.render(
     </Provider>
     <Provider store={store}>
       <PracApp />
-    </Provider>
+    </Provider> 
   </React.StrictMode>
 );

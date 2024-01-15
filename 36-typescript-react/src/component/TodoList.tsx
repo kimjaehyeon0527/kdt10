@@ -12,7 +12,7 @@ function TodoList() {
   const addTodo = () => {
     const updateTodo = [
       ...todos,
-      { id: Date.now(), content: newTodo, complate: false },
+      { id: Date.now(), content: newTodo, complated: false },
     ];
     setTodos(updateTodo); // 전체 투두에 새로운 투두 추가
     setNewTodo(''); // input 초기화
@@ -24,6 +24,8 @@ function TodoList() {
         ? { ...todo, complated: !todo.complated }
         : todo;
     });
+    setTodos(updateTodo);
+    console.log(updateTodo);
   };
 
   return (
@@ -32,18 +34,13 @@ function TodoList() {
       <input
         type="text"
         value={newTodo}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setNewTodo(e.target.value);
-        }}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setNewTodo(e.target.value)
+        }
       />
       <button onClick={addTodo}>add</button>
       {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          id={todo.id}
-          content={todo.content}
-          complated={todo.complated}
-        />
+        <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
       ))}
     </>
   );
