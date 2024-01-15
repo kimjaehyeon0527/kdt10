@@ -83,7 +83,13 @@ app.post(
   '/upload/fields',
   uploadDetail.fields([{ name: 'userfile1' }, { name: 'userfile2' }]),
   (req, res) => {
-    /*
+    console.log(req.files);
+    console.log(req.body);
+    res.send('여러개의 인풋에 각각의 파일 업로드 완료!');
+  }
+);
+
+/*
         {
             userfile1: [
                 {파일 정보}
@@ -93,12 +99,6 @@ app.post(
             ]
         }
     */
-    console.log(req.files);
-    console.log(req.body);
-    res.send('여러개의 인풋에 각각의 파일 업로드 완료!');
-  }
-);
-
 // 동적 폼 전송
 app.post('/dynamic', uploadDetail.single('dynamicFile'), (req, res) => {
   console.log(req.file);
